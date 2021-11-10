@@ -3,12 +3,23 @@
 <h3>ID: <%= @profile.id %></h3>
 <h3>Rating: <%= @profile.captain %></h3>
 <h3>Owner: <%= @profile.email %></h3>
+<h3>Boat: <%= @profile.boats.map{ |b| b.category }.join %></h3>
 
- <td><%= link_to @profile.boats, boat_path(@profile.id) %></td>  
+ <%
+=begin%>
+ <%= link_to "Update Boat", edit_boat_path(@boat) %>  
+<%
+=end%>
+ <%
+=begin%>
+ <td><%= link_to @profile.boats, boat_path(@profile.id) %></td>   
+<%
+=end%>
 
 <p>
    <%= link_to "<< Back to Profiles", profiles_path %>
    |
    <%= link_to "Update Profile", edit_profile_path(@profile) %>
-
+   |
+   <%= link_to "Delete Profile", @profile, method: :delete %>
 </p>

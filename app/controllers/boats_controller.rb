@@ -4,9 +4,15 @@ class BoatsController < ApplicationController
   end
 
   def new
+    @boat = Boat.new
+    @profiles = Profile.order(:name)
   end
 
   def create
+    # render json: boat_params
+    @boat = Boat.new(boat_params)
+    @boat.save
+    redirect_to @boat   
   end
 
   def show
@@ -14,6 +20,8 @@ class BoatsController < ApplicationController
   end
 
   def edit
+    @boat = Boat.find(params[:id])
+    @profiles = Profile.order(:name)
   end
 
   def update
@@ -23,5 +31,12 @@ class BoatsController < ApplicationController
   end
 
   def destroy
+    @boat = Boat.find(params[:id])
+    @boat.destroy
+    redirect_to boats_path
+  end
+
+  def boat_params 
+    params.require(:boat).permit(:category, :size, :capasity, :activity, :profile_id)
   end
 end

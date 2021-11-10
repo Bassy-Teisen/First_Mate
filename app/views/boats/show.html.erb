@@ -5,7 +5,9 @@
 <h3>Category: <%= @boat.category %></h3>
 
 <p>
-   <%= link_to "<< Back to Profiles", boats_path %>
+   <%= link_to "<< Back to Boats", boats_path %>
    |
-   <%= link_to "Update Profile", edit_boat_path(@boat) %> 
+   <%= link_to "Update Boat", edit_boat_path(@boat) %> 
+   |
+   <%= link_to "Delete Profile", @boat, method: :delete %>
 </p>

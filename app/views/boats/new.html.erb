@@ -1,7 +1,7 @@
 <h1>Boats#new</h1>
 
 
-<%= form_with model: @boats do |f| %>
+<%= form_with model: @boat do |f| %>
     <p>
         <%= f.label :category %>
         <%= f.text_field :category %>
@@ -9,6 +9,10 @@
     <p>
         <%= f.label :size %>
         <%= f.text_field :size %>
+    </p>
+    <p>
+        <%= f.label :profile_id %>
+        <%= f.collection_select :profile_id, @profiles, :id, :name %>
     </p>
     <p>
         <%= f.label :capasity %>

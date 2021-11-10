@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   
   def index
     @profiles = Profile.order(name: :desc)
+    # @boats = Boat.order(:category)
   end
 
   def new
@@ -28,9 +29,14 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find(params[:id])
+    @boat = Boat.order(:category)
   end
 
   def destroy
+    @profile = Profile.find(params[:id])
+    @profile.destroy
+    redirect_to profiles_path
+
   end
 
   def profile_params 
