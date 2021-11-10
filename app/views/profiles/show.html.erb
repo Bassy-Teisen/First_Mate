@@ -1,2 +1,12 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<h1><%= @profile.name %></h1>
+
+<h3>ID: <%= @profile.id %></h3>
+<h3>Rating: <%= @profile.captain %></h3>
+<h3>Owner: <%= @profile.email %></h3>
+
+<p>
+   <%= link_to "<< Back to Profiles", profiles_path %>
+   |
+   <%= link_to "Update Profile", edit_profile_path(@profile) %>
+
+</p>
