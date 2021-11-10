@@ -1,2 +1,11 @@
-<h1>Boats#show</h1>
-<p>Find me in app/views/boats/show.html.erb</p>
+<h1><%= @boat.profile.name %></h1>
+
+<h3>ID: <%= @boat.id %></h3>
+<h3>Boat owner: <%= @boat.profile.name %></h3>
+<h3>Category: <%= @boat.category %></h3>
+
+<p>
+   <%= link_to "<< Back to Profiles", boats_path %>
+   |
+   <%= link_to "Update Profile", edit_boat_path(@boat) %> 
+</p>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'boats', to: 'boats#index', as: 'boats'
   get 'boats', to: 'boats#create'
   get 'boats/new', to: 'boats#new', as: 'new_boat'
-  get 'boats/:id/edit', to: 'boats#edit', as: 'boat_edit'
+  get 'boats/:id/edit', to: 'boats#edit', as: 'edit_boat'
   get 'boats/:id', to: 'boats#show', as: 'boat'
   get 'boats/:id', to: 'boats#update'
   get 'boats/:id', to: 'boats#destroy'

@@ -4,6 +4,8 @@
 <h3>Rating: <%= @profile.captain %></h3>
 <h3>Owner: <%= @profile.email %></h3>
 
+ <td><%= link_to @profile.boats, boat_path(@profile.id) %></td>  
+
 <p>
    <%= link_to "<< Back to Profiles", profiles_path %>
    |

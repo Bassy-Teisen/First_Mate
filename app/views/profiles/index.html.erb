@@ -5,7 +5,8 @@
 <table>
     <% @profiles.each do |pro|%>
     <tr>
-        <td><%= link_to pro.name, profile_path(pro.id) %></td>      
+        <td><%= link_to pro.name, profile_path(pro.id) %></td>         
+              
     </tr>
     <% end %>
 </table>
