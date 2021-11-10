@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  size: MyString
+  capasity: MyString
+  activity: MyString
+
+two:
+  category: MyString
+  size: MyString
+  capasity: MyString
+  activity: MyString
