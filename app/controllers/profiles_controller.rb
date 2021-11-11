@@ -18,6 +18,8 @@ class ProfilesController < ApplicationController
   #  render json: profile_params 
     @profile = Profile.new(profile_params)
     @profile.save
+
+    
     redirect_to @profile    
   end
 
