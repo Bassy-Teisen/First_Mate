@@ -1,3 +1,3 @@
 class Profile < ApplicationRecord
-    has_many :boats, dependent: :destroy
+    has_one :boat, dependent: :destroy
 end

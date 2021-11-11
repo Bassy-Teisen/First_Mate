@@ -7,7 +7,7 @@
     <% @profiles.each do |pro|%>
     <tr>
         <td><%= link_to pro.name, profile_path(pro.id) %></td>         
-        <td>Has a: <%= pro.boats.map{ |b| b.category }.join %></td>         
+        <td>Has a: <%= pro.boat %></td>         
               
     </tr>
     <% end %>

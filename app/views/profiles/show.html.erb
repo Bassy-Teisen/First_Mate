@@ -3,7 +3,11 @@
 <h3>ID: <%= @profile.id %></h3>
 <h3>Rating: <%= @profile.captain %></h3>
 <h3>Owner: <%= @profile.email %></h3>
-<h3>Boat: <%= @profile.boats.map{ |b| b.category }.join %></h3>
+<% if @profile.boat.nil? %>
+<% else %>
+<h3>Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
+
+<% end %>
 
  <%
 =begin%>
