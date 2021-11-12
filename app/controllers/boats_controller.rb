@@ -6,15 +6,23 @@ class BoatsController < ApplicationController
   end
 
   def new
-    @boat = Boat.new
-    @profiles = Profile.order(:name)
+    if current_user.profile.boat.nil?
+      @boat = Boat.new
+      @profiles = Profile.order(:name)
+    else
+      redirect_to user_session_path
+    end
   end
 
   def create
-    # render json: boat_params
-    @boat = Boat.new(boat_params)
-    @boat.save
-    redirect_to @boat   
+    if current_user.profile.boat.nil?
+      @boat = Boat.new(boat_params)
+      @boat.profile_id = current_user.profile.id
+      @boat.save!
+      redirect_to @boat  
+    else
+      redirect_to @boat
+    end
   end
 
   def show
