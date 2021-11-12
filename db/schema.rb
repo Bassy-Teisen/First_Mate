@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_044826) do
+ActiveRecord::Schema.define(version: 2021_11_10_043213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2021_11_10_044826) do
     t.string "size", limit: 50
     t.string "capasity", limit: 50
     t.string "activity", limit: 100
+    t.bigint "profile_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "profile_id", null: false
     t.index ["profile_id"], name: "index_boats_on_profile_id"
   end
 
@@ -31,10 +31,24 @@ ActiveRecord::Schema.define(version: 2021_11_10_044826) do
     t.string "phone_number", limit: 15
     t.boolean "captain"
     t.text "description"
-    t.string "email", limit: 50
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "boats", "profiles"
+  add_foreign_key "profiles", "users"
 end

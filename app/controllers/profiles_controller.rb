@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_profile, only: [:new, :edit]
   
   def index
@@ -7,7 +8,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profiles = Profile.new
+    @profile = Profile.new
   end
 
   def show

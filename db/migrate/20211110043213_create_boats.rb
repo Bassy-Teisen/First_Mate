@@ -5,6 +5,7 @@ class CreateBoats < ActiveRecord::Migration[6.1]
       t.string :size, limit: 50
       t.string :capasity, limit: 50
       t.string :activity, limit: 100
+      t.references :profile, null: false, foreign_key: true
 
       t.timestamps
     end

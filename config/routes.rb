@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  devise_for :users
   get 'boats', to: 'boats#index', as: 'boats'
   post 'boats', to: 'boats#create'
   get 'boats/new', to: 'boats#new', as: 'new_boat'
