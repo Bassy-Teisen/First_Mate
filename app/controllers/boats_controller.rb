@@ -18,8 +18,13 @@ class BoatsController < ApplicationController
     if current_user.profile.boat.nil?
       @boat = Boat.new(boat_params)
       @boat.profile_id = current_user.profile.id
+      begin
       @boat.save!
       redirect_to @boat  
+      rescue
+        flash.now[:errors] = @boat.errors.messages.values.flatten
+        render 'new'
+      end
     else
       redirect_to @boat
     end
@@ -36,8 +41,13 @@ class BoatsController < ApplicationController
 
   def update
     @boat = Boat.find(params[:id])
-    @boat.update(boat_params)
-    redirect_to @boat
+    begin 
+      @boat.update!(boat_params)
+      redirect_to @boat
+    rescue
+      flash.now[:errors] = @boat.errors.messages.values.flatten
+      render 'edit'
+    end
   end
 
   def destroy

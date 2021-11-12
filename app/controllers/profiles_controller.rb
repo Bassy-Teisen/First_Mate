@@ -39,8 +39,13 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
+    begin
     @profile.update!(profile_params)
     redirect_to @profile
+    rescue
+      flash.now[:errors] = @profile.errors.messages.values.flatten
+      render 'edit'
+    end
   end
 
   def edit
