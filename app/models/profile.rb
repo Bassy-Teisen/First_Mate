@@ -2,6 +2,9 @@ class Profile < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one :boat, dependent: :destroy
-  belongs_to :user, class_name: "user", foreign_key: "user_id"
-    # validates :name, presence: true 
+  belongs_to :user
+  
+    validates :name, presence: {message: "Need to add a Name"}
+    validates :phone_number, presence: {message: "Need to add a Phone Number"}
+    validates :captain, presence: {message: "Need to add a Captian True"}
 end

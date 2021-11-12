@@ -23,7 +23,11 @@
 <p>
    <%= link_to "<< Back to Profiles", profiles_path %>
    |
-   <%= link_to "Update Profile", edit_profile_path(@profile) %>
-   |
-   <%= link_to "Delete Profile", @profile, method: :delete %>
+   <% if @profile.user_id == current_user.id %>
+      <%= link_to "Update Profile", edit_profile_path(@profile) %>
+      |
+      <%= link_to "Delete Profile", @profile, method: :delete %>
+   <% else %>
+      <p>No</p>
+   <% end %>
 </p>

@@ -7,8 +7,13 @@ class ProfilesController < ApplicationController
     # @boats = Boat.order(:category)
   end
 
-  def new
-    @profile = Profile.new
+ def new
+    if current_user.profile.nil?
+      @profile = Profile.new
+      @users = User.order(:email)
+    else
+      redirect_to user_session_path
+    end
   end
 
   def show
@@ -16,12 +21,19 @@ class ProfilesController < ApplicationController
   end
 
   def create
-  #  render json: profile_params 
-    @profile = Profile.new(profile_params)
-    @profile.save
-
-    
-    redirect_to @profile    
+    if current_user.profile.nil?
+      @profile = Profile.new(profile_params)
+      @profile.user_id = current_user.id
+    begin
+      @profile.save!
+      redirect_to @profile
+    rescue
+      flash.now[:errors] = @profile.errors.messages.values.flatten
+      render 'new'
+    end
+    else
+      redirect_to @profile    
+    end
   end
 
   def update
@@ -33,6 +45,7 @@ class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find(params[:id])
     @boat = Boat.order(:category)
+   
   end
 
   def destroy
@@ -43,7 +56,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params 
-    params.require(:profile).permit(:name, :phone_number, :captain, :description, :email )
+    params.require(:profile).permit(:name, :phone_number, :captain, :description, :email, :user_id )
   end
  
   def set_profile

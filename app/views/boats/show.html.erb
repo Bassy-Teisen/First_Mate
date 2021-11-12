@@ -7,7 +7,11 @@
 <p>
    <%= link_to "<< Back to Boats", boats_path %>
    |
-   <%= link_to "Update Boat", edit_boat_path(@boat) %> 
-   |
-   <%= link_to "Delete Profile", @boat, method: :delete %>
+   <% if @boat.profile.user_id == current_user.id %>
+      <%= link_to "Update Boat", edit_boat_path(@boat) %> 
+      |
+      <%= link_to "Delete Profile", @boat, method: :delete %>
+   <% else %>
+      <p>No</p>
+   <% end %>
 </p>

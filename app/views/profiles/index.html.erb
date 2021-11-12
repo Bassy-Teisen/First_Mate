@@ -3,7 +3,6 @@
 <p><%= link_to 'New Profile', new_profile_path %></p>
 <p><%= link_to 'Boats page', boats_path %></p>
 
-<%= link_to 'Sign In', user_session_path %>
 <% if user_signed_in? %>
 <p><%= link_to 'New Profile', new_profile_path %></p>
 <% end %>
@@ -11,8 +10,11 @@
 <table>
     <% @profiles.each do |pro|%>
     <tr>
-        <td><%= link_to pro.name, profile_path(pro.id) %></td>         
-        <td>Has a: <%= pro.boat %></td>                     
+        <td><%= link_to pro.name, profile_path(pro.id) %></td>    
+        <% if pro.boat.nil? %>
+        <% else %>     
+            <td>Their a captain of a: <%= pro.boat.category %></td>  
+        <% end %>                   
     </tr>
     <% end %>
 </table>
