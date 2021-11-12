@@ -1,12 +1,15 @@
+<h1>Profile show</h1>
+
 <h1><%= @profile.name %></h1>
+<h3>Are you a Captian?: <%= @profile.captain %></h3>
+<h3>Personal description: <%= @profile.description %></h3>
+|
+<h2>If you want to add your boat follow the<%= link_to "<<Link", new_boat_path(@profile.id) %></h2>
 
-<h3>ID: <%= @profile.id %></h3>
-<h3>Rating: <%= @profile.captain %></h3>
-<h3>Owner: <%= @profile %></h3>
 <% if @profile.boat.nil? %>
-<% else %>
-<h3>Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
 
+<% else %>
+   <h3>Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
 <% end %>
 
  <%

@@ -11,15 +11,20 @@
   </head>
 
   <body>
-    <h3><%= user_signed_in? %></h3>
-    <% if user_signed_in? %>
-      <h3><%= current_user.email %></h3>
-      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %>
-    <% else %>
-      <%= link_to 'Sign In', user_session_path %>
+    <%= render 'layouts/valdisplay' %>
+    <% if flash[:errors] %>
+      <section id="errors">
+        <% flash[:errors].each do |error| %>
+          <p><%= error %></p>
+        <% end %>
+      </section>
     <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
+
+
+
+

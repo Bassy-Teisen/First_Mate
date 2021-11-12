@@ -1,17 +1,4 @@
 <h1>Profiles#edit</h1>
 
-
-<%= form_with model: @profile do |f| %>
-    <p>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-    </p>
-    <p>
-        <%= f.label :captain %>
-        <%= f.text_field :captain %>
-    </p>
-     <p>
-        <%= f.submit 'Update profile' %>
-    </p>
-<% end %>
+<%= render 'par', caption: "Edit Profile" %>
 

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_profile, only: [:new, :edit]
+  before_action :set_profile, only: [:new, :edit, :create]
   
   def index
     @profiles = Profile.order(name: :desc)
@@ -24,13 +24,13 @@ class ProfilesController < ApplicationController
     if current_user.profile.nil?
       @profile = Profile.new(profile_params)
       @profile.user_id = current_user.id
-    begin
-      @profile.save!
-      redirect_to @profile
-    rescue
-      flash.now[:errors] = @profile.errors.messages.values.flatten
-      render 'new'
-    end
+      begin
+        @profile.save!
+        redirect_to @profile
+      rescue
+        flash.now[:errors] = @profile.errors.messages.values.flatten
+        render 'new'
+      end
     else
       redirect_to @profile    
     end
@@ -38,7 +38,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    @profile.update(profile_params)
+    @profile.update!(profile_params)
     redirect_to @profile
   end
 

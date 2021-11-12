@@ -1,20 +1,3 @@
 <h1>Profiles#new</h1>
 
-
-<%= form_with model: @profile do |f| %>
-    <p>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-    </p>
-    <p>
-        <%= f.label :captain %>
-        <%= f.text_field :captain %>
-    </p>
-    <p>
-        <%= f.label :phone_number %>
-        <%= f.text_field :phone_number %>
-    </p>
-    <p>
-        <%= f.submit 'Create new profile' %>
-    </p>
-<% end %>
+<%= render 'par', caption: "Create a profile" %>
