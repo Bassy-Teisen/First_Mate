@@ -15,6 +15,7 @@
     <tr>
         <td><%= link_to pro.name, profile_path(pro.id) %></td>    
         <% if pro.boat.nil? %>
+            <td>What a deckhand!</td>
         <% else %>     
             <td>Their a captain of a: <%= pro.boat.category %></td>  
         <% end %>                   
