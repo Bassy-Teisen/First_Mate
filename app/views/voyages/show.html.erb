@@ -1,2 +1,29 @@
 <h1>Voyages#show</h1>
-<p>Find me in app/views/voyages/show.html.erb</p>
+
+
+<h3>Description: <%= @voyage.description %></h3>
+<h3>Voyage date: <%= @voyage.voyage %></h3>
+<h3>Launch Time: <%= @voyage.launch %></h3>
+<%
+=begin%>
+ <h3>Launch Date: <%= @voyage.date %></h3> 
+<%
+=end%>
+
+
+<td><%= cl_image_tag @voyage.voyage_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if @voyage.voyage_image.attached?%></td>  
+      
+      
+<p>
+   <%= link_to "<< Back to Voyages", voyages_path %>
+   |
+<% if user_signed_in? %>
+   <% if @voyage.user_id == current_user.id %>
+      <%= link_to "Update Voyage", edit_voyage_path(@voyage) %> 
+      |
+      <%= link_to "Delete Voyage", @voyage, method: :delete %>
+   <% else %>
+      <p>No</p>
+   <% end %>
+<% end %>
+</p>

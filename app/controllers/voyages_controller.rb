@@ -6,7 +6,7 @@ class VoyagesController < ApplicationController
   end
 
   def new
-    if current_user.profile.voyage.nil?
+    if current_user.voyage.nil?
       @voyage = Voyage.new
       @profiles = Profile.order(:name)
     else
@@ -15,9 +15,9 @@ class VoyagesController < ApplicationController
   end
 
   def create
-    if current_user.profile.voyage.nil?
+    if current_user.voyage.nil?
       @voyage = Voyage.new(voyage_params)
-      @voyage.profile_id = current_user.profile.id
+      @voyage.user_id = current_user.id
       begin
       @voyage.save!
       redirect_to @voyage  
@@ -57,6 +57,6 @@ class VoyagesController < ApplicationController
   end
 
   def voyage_params 
-    params.require(:voyage).permit(:description, :profile_id, :voyage_image)
+    params.require(:voyage).permit(:description, :launch, :voyage, :profile_id, :voyage_image)
   end
 end
