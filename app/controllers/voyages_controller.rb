@@ -65,8 +65,13 @@ class VoyagesController < ApplicationController
   def join
     @voyage = Voyage.find(params[:id])
     p 'blah'
-    # @voyage.appliers << current_user.profile
-    # redirect_to @voyage
+    @voyage.appliers << current_user
+    
+    
+  end
+
+  def joiner
+     redirect_to @voyage
   end
   
   # def leave

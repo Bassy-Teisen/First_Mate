@@ -1,2 +1,27 @@
 <h1>Voyages#join</h1>
-<p>Find me in app/views/voyages/update.html.erb</p>
+<p><%= @voyage.id %></p>
+<p><%= current_user.id %></p>
+
+<%= form_with model: @voyage do |f| %>
+
+    <p>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </p>
+    <p>
+        <%= f.label :Launch_date %>
+        <%= f.date_field :voyage %>
+    </p>
+    <p>
+        <%= f.label :Launch_time %>
+        <%= f.time_field :launch %>
+    </p>
+    <p>
+        <%= f.label :voyage_image %>
+        <%= f.file_field :voyage_image %>
+    </p>
+    <p>
+        <%= f.submit 'Join Voyage' %>
+    </p>
+
+<% end %>
