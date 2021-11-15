@@ -39,10 +39,10 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    begin
-    @profile.update!(profile_params)
+    # begin
+    if @profile.update!(profile_params)
     redirect_to @profile
-    rescue
+    else
       flash.now[:errors] = @profile.errors.messages.values.flatten
       render 'edit'
     end
@@ -62,7 +62,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params 
-    params.require(:profile).permit(:name, :phone_number, :captain, :description, :email, :user_id )
+    params.require(:profile).permit(:name, :phone_number, :captain, :description, :email, :user_id, :profile_image )
   end
  
   def set_profile

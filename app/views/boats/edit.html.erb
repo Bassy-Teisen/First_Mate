@@ -1,32 +1,4 @@
 <h1>Boats#edit</h1>
 
 
-<%= form_with model: @boat do |f| %>
-    <p>
-        <%= f.label :category %>
-        <%= f.text_field :category %>
-    </p>
-    <p>
-        <%= f.label :size %>
-        <%= f.text_field :size %>
-    </p>
-    <%
-=begin%>
- <p>
-        <%= f.label :profile_id %>
-        <%= f.collection_select :profile_id, @profiles, :id, :name %>
-    </p> 
-<%
-=end%>
-    <p>
-        <%= f.label :capasity %>
-        <%= f.text_field :capasity %>
-    </p>
-    <p>
-        <%= f.label :activity %>
-        <%= f.text_field :activity %>
-    </p>
-    <p>
-        <%= f.submit 'Edit Boat' %>
-    </p>
-<% end %>
+<%= render 'par', caption: "Update your Boat" %>

@@ -1,7 +1,9 @@
 <h1>Boats</h1>
 
 <% if user_signed_in?%>
-    <p><%= link_to 'New Boat', new_boat_path %></p>
+    <% if current_user.profile.boat.nil? %>
+    <p><%= link_to 'Add your Boat here', new_boat_path %></p>
+    <% end %>
 <% end %>
 
 <p><%= link_to "profile page", profiles_path %></p>           
@@ -9,6 +11,7 @@
 <table>
     <% @boats.each do |bo|%>
     <tr>
+        <td><%= cl_image_tag bo.boat_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if bo.boat_image.attached?%></td>  
         <td><%= bo.profile.name %></td>           
         <td><%= link_to bo.category, boat_path(bo.id) %></td>           
     </tr>

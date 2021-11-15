@@ -1,24 +1,4 @@
 <h1>Boats#new</h1>
 
 
-<%= form_with model: @boat do |f| %>
-    <p>
-        <%= f.label :category %>
-        <%= f.text_field :category %>
-    </p>
-    <p>
-        <%= f.label :size %>
-        <%= f.text_field :size %>
-    </p>
-    <p>
-        <%= f.label :capasity %>
-        <%= f.text_field :capasity %>
-    </p>
-    <p>
-        <%= f.label :activity %>
-        <%= f.text_field :activity %>
-    </p>
-    <p>
-        <%= f.submit 'Create new Boat' %>
-    </p>
-<% end %>
+<%= render 'par', caption: "Create a Boat" %>

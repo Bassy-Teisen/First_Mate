@@ -6,14 +6,17 @@
 <% else %>
 <h3>Your a Captain!</h3>
 <% end %>
-<h3>Personal description: <%= @profile.description %></h3>
+
+
+<td><%= cl_image_tag @profile.profile_image.key, crop: :scale, width: 150, cloud_name: 'diu8yxgel' if @profile.profile_image.attached?%></td>
+
 <h3>Personal description: <%= @profile.description %></h3>
 <h3>Personal Phone number: <%= @profile.phone_number %></h3>
 |
 <% if user_signed_in? %>
    <% if current_user.profile.id == @profile.id %>
       <% if @profile.boat.nil? %>
-      <h2>If you want to add your boat follow the<%= link_to "<<Link", new_boat_path(@profile.id) %></h2>
+      <h2>If you want to add your boat follow the<%= link_to "Boat Link", new_boat_path(@profile.id) %></h2>
       <% else %>
          
          <h3>Boat: <%= link_to @profile.boat.category, edit_boat_path(@profile.boat.id) %></h3>
@@ -21,16 +24,7 @@
       <% end %>
    <% end %>
 
- <%
-=begin%>
- <%= link_to "Update Boat", edit_boat_path(@boat) %>  
-<%
-=end%>
- <%
-=begin%>
- <td><%= link_to @profile.boats, boat_path(@profile.id) %></td>   
-<%
-=end%>
+
 
 <p>
    <%= link_to "<< Back to Profiles", profiles_path %>
@@ -38,11 +32,11 @@
    <% if user_signed_in? %>
       <% if @profile.user_id == current_user.id %>
          <%= link_to "Update Profile", edit_profile_path(@profile) %>
-   <% end %>
+   
    |
-      <%= link_to "Delete Profile", @profile, method: :delete %>
-   <% else %>
-      <p>No</p>
+         <%= link_to "Delete Profile", @profile, method: :delete %>
+      <% else %>
+         <p>No</p>
+      <% end %>
    <% end %>
-
 </p>

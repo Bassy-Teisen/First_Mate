@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
  
+  get 'voyages/index'
+  get 'voyages/new'
+  get 'voyages/create'
+  get 'voyages/show'
+  get 'voyages/edit'
+  get 'voyages/update'
+  get 'voyages/destroy'
   devise_for :users
   get 'boats', to: 'boats#index', as: 'boats'
   post 'boats', to: 'boats#create'

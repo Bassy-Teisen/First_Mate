@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # profile = [
-#     {name: "Captain Cook", phone_number: "23425565", captain: true, description: "dhfgf"},
-#     {name: "Jack Sparrow", phone_number: "230985565", captain: true, description: "dhfgf"},
-#     {name: "Jonny Bravo", phone_number: "2342745665", captain: false, description: "dhfgf"},
-#     {name: "Goku", phone_number: "2342556789", captain: false, description: "dhfgf"},
+#     {name: "Captain Cook", phone_number: "23425565", description: "dhfgf"},
+#     {name: "Jack Sparrow", phone_number: "230985565", description: "dhfgf"},
+#     {name: "Jonny Bravo", phone_number: "2342745665", description: "dhfgf"},
+#     {name: "Goku", phone_number: "2342556789", description: "dhfgf"},
 # ]
 
 # # Profile.create()

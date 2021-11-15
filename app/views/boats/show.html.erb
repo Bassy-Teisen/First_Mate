@@ -5,6 +5,9 @@
 <h3>Capasity: <%= @boat.capasity %></h3>
 <h3>Activity: <%= @boat.activity %></h3>
 
+<td><%= cl_image_tag @boat.boat_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if @boat.boat_image.attached?%></td>  
+      
+      
 <p>
    <%= link_to "<< Back to Boats", boats_path %>
    |

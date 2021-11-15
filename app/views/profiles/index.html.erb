@@ -13,6 +13,8 @@
 <table>
     <% @profiles.each do |pro|%>
     <tr>
+
+        <td><%= cl_image_tag pro.profile_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if pro.profile_image.attached?%></td> 
         <td><%= link_to pro.name, profile_path(pro.id) %></td>    
         <% if pro.boat.nil? %>
             <td>What a deckhand!</td>
