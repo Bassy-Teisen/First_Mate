@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'voyages', to: 'voyages#index', as: 'voyages'
   post 'voyages', to: 'voyages#create'
+  get 'voyages/:id/join', to: 'voyages#join', as: 'join_voyage'
   get 'voyages/new', to: 'voyages#new', as: 'new_voyage'
   get 'voyages/:id/edit', to: 'voyages#edit', as: 'edit_voyage'
   get 'voyages/:id', to: 'voyages#show', as: 'voyage'

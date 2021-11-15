@@ -23,6 +23,7 @@
       |
       <%= link_to "Delete Voyage", @voyage, method: :delete %>
    <% else %>
+      <%= link_to "Join Voyage", join_voyage_path(@voyage) %> 
       <p>No</p>
    <% end %>
 <% end %>

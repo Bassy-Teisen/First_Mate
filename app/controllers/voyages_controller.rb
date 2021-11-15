@@ -3,6 +3,9 @@ class VoyagesController < ApplicationController
 
   def index
     @voyages = Voyage.order(description: :desc)
+    @Users = User.order(:email)
+    @profiles = Profile.order(:name)
+
   end
 
   def new
@@ -37,6 +40,9 @@ class VoyagesController < ApplicationController
   def edit
     @voyage = Voyage.find(params[:id])
     @profiles = Profile.order(:name)
+    p "blah"
+    p "blah"
+    p "blah"
   end
 
   def update
@@ -55,6 +61,19 @@ class VoyagesController < ApplicationController
     @voyage.destroy
     redirect_to voyages_path
   end
+
+  def join
+    @voyage = Voyage.find(params[:id])
+    p 'blah'
+    # @voyage.appliers << current_user.profile
+    # redirect_to @voyage
+  end
+  
+  # def leave
+  #   @team = Team.find params[:id]
+  #   current_user.update_attribute(:team_id, nil)
+  #   redirect_to @team
+  # end
 
   def voyage_params 
     params.require(:voyage).permit(:description, :launch, :voyage, :profile_id, :voyage_image)

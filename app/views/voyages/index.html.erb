@@ -15,11 +15,14 @@
     <% @voyages.each do |voy|%>
     <tr>
         <td><%= cl_image_tag voy.voyage_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%></td>  
-        
+        <td>ID: <%= voy.id %></td>  
         <td><%= link_to voy.user.profile.name, voyage_path(voy.id) %></td>           
         <td><%= voy.user.profile.name %></td>         
-        <td><%= voy.user.applied.map { |a| a.voyage }.join(", ") %></td>           
-        <td><%= voy.user.applied.inspect %></td>           
+        <td><%= voy.user.email %></td>         
+        <% voy.appliers.each do |u| %>
+        <td><%= u.id %></td>            
+                   
+        <% end %>
     </tr>
     <% end %>
 </table>
