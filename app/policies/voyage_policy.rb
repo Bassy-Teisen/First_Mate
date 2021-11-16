@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ProfilePolicy
+class VoyagePolicy
   attr_reader :user, :record
 
   def initialize(user, record)
