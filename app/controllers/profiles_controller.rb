@@ -1,6 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
+  before_action :check_valid 
   before_action :set_profile, only: [:new, :edit, :create]
+
+
   
   def index
     @profiles = Profile.order(name: :desc)
@@ -61,11 +64,18 @@ class ProfilesController < ApplicationController
 
   end
 
+  private
+
   def profile_params 
     params.require(:profile).permit(:name, :phone_number, :captain, :description, :email, :user_id, :profile_image )
   end
  
   def set_profile
     @profile = Profile.order(:name)
+  end
+
+  
+  def check_valid
+    authorize Profile
   end
 end
