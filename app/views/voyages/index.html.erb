@@ -1,4 +1,4 @@
-<h1>Voyages#index</h1>
+<h1>Voyages Page</h1>
 
 <% if user_signed_in?%>
     <% if current_user.voyage.nil? %>
@@ -8,8 +8,6 @@
 
 <p><%= link_to 'Boats page', boats_path %></p>
 <p><%= link_to 'Profiles page', profiles_path %></p>
-
-     
 
 <table>
     <% @voyages.each do |voy|%>

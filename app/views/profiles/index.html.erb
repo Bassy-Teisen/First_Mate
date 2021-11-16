@@ -28,3 +28,16 @@
     </tr>
     <% end %>
 </table>
+
+
+
+
+        <%
+=begin%>
+ <% if current_user.has_any_role? %>
+            <p>Has role</p>
+        <% else %>
+            <p>No Role</p>
+        <% end %>  
+<%
+=end%>
