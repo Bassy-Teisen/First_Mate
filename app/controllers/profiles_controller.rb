@@ -21,7 +21,6 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    # @user.id = @profile.user_id
   end
 
   def create
