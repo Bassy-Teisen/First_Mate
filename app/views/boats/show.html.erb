@@ -6,18 +6,15 @@
 <h3>Activity: <%= @boat.activity %></h3>
 
 <td><%= cl_image_tag @boat.boat_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if @boat.boat_image.attached?%></td>  
-      
-      
+ 
 <p>
-   <%= link_to "<< Back to Boats", boats_path %>
+   <%= link_to "<< Back to Boats!", boats_path %>
    |
 <% if user_signed_in? %>
    <% if @boat.profile.user_id == current_user.id %>
-      <%= link_to "Update Boat", edit_boat_path(@boat) %> 
+      <%= link_to "Update Boat!", edit_boat_path(@boat) %> 
       |
-      <%= link_to "Delete Profile", @boat, method: :delete %>
-   <% else %>
-      <p>No</p>
+      <%= link_to "Delete Profile!", @boat, method: :delete %>
    <% end %>
 <% end %>
 </p>

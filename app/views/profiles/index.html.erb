@@ -1,26 +1,29 @@
-<h1>Profiles</h1>
+<h1>Profiles Page</h1>
 
 
-
-
-<p><%= link_to 'Boats page', boats_path %></p>
-<p><%= link_to 'Voyages page', voyages_path %></p>
+<p><%= link_to 'Boats Page!', boats_path %></p>
+<p><%= link_to 'Voyages Page!', voyages_path %></p>
 
 <% if user_signed_in? %>
-    <p><%= link_to 'New Profile', new_profile_path %></p>
-<% else %>
+     <% if current_user.profile.nil? %>
+    <p><%= link_to 'New Profile!', new_profile_path %></p>
+    <% end %> 
 <% end %>
 
 <table>
     <% @profiles.each do |pro|%>
     <tr>
-
         <td><%= cl_image_tag pro.profile_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if pro.profile_image.attached?%></td> 
+        <% if user_signed_in? %>
+            <% if current_user.id == pro.user.id %>
+            <td>Your Profile!</td>
+            <% end %>  
+        <% end %>  
         <td><%= link_to pro.name, profile_path(pro.id) %></td>    
         <% if pro.boat.nil? %>
             <td>What a deckhand!</td>
         <% else %>     
-            <td>Their a captain of a: <%= pro.boat.category %></td>  
+            <td>Their a captain of a: <%= link_to pro.boat.category, boat_path(pro.boat.id) %></td>  
         <% end %>                   
     </tr>
     <% end %>

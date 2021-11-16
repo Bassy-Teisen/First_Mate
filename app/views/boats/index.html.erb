@@ -1,20 +1,28 @@
-<h1>Boats</h1>
+<h1>Boats Page</h1>
 
 <% if user_signed_in?%>
     <% if current_user.profile.boat.nil? %>
-    <p><%= link_to 'Add your Boat here', new_boat_path %></p>
+    <p><%= link_to 'Add your Boat here!', new_boat_path %></p>
     <% end %>
 <% end %>
 
-<p><%= link_to "profile page", profiles_path %></p> 
-<p><%= link_to 'Voyages page', voyages_path %></p>          
+<p><%= link_to "Profiles Page!", profiles_path %></p> 
+<p><%= link_to 'Voyages Page!', voyages_path %></p>          
 
 <table>
     <% @boats.each do |bo|%>
     <tr>
         <td><%= cl_image_tag bo.boat_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if bo.boat_image.attached?%></td>  
+        <% if user_signed_in? %>
+            <% if !bo.boat_image.attached? %>
+                <td><%= link_to "Add your Boat's picture!", edit_boat_path(bo.id) %></td>
+            <% end %>  
+            <% if current_user.id == bo.profile.user.id %>
+                <td>Your Boat:</td>
+            <% end %>  
+        <% end %>  
         <td><%= bo.profile.name %></td>           
-        <td><%= link_to bo.category, boat_path(bo.id) %></td>           
+        <td>Link to Boat: <%= link_to bo.category, boat_path(bo.id) %></td>           
     </tr>
     <% end %>
 </table>
