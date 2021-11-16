@@ -3,6 +3,10 @@
         <%= current_user.email %>
         |
         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <% if current_user.profile.nil? %>
+        <% else %>
+            <p>Profile: <%= current_user.profile.name %></p>
+        <% end %>
     <% else %>
         <%= link_to "Login", new_user_session_path %>
         |
