@@ -20,8 +20,11 @@
         <td><%= voy.user.profile.name %></td>         
         <td><%= voy.user.email %></td>         
         <% voy.appliers.each do |u| %>
-        <td><%= u.id %></td>            
-                   
+            <% if u.profile.nil? %>
+            <% else %>
+                <td>Need if state: <%= link_to u.profile.name, profile_path(u.profile.id) %></td>
+                <td><%= u.profile.phone_number %></td>   
+            <% end %>                 
         <% end %>
     </tr>
     <% end %>
