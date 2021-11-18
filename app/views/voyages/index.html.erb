@@ -1,8 +1,14 @@
 <h1>Voyages Page</h1>
 
 <% if user_signed_in?%>
-    <% if current_user.voyage.nil? %>
-    <p><%= link_to 'Add your Voyage here', new_voyage_path %></p>
+    <% if !current_user.profile.nil? %>
+        <% if !current_user.profile.boat.nil? %>
+            <% if current_user.voyage.nil? %>
+                <p><%= link_to 'Add your Voyage here', new_voyage_path %></p>
+            <% end %>
+        <% else %>
+            <h2>Add a boat to your profile to create a voyage: <%= link_to "Boat Link!", boats_path %></h2>
+        <% end %>
     <% end %>
 <% end %>
 

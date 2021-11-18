@@ -12,23 +12,26 @@
 <h3>Personal Phone number: <%= @profile.phone_number %></h3>
 |
 <% if user_signed_in? %>
-   <% if current_user.profile.id == @profile.id %>
+   <% if current_user.id == @profile.user.id %>
       <% if @profile.boat.nil? %>
          <h2>To become a Captain add your boat here: <%= link_to "Boat Link!", new_boat_path(@profile.id) %></h2>
+      <% else %> 
+         <h3>Veiw Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
       <% end %>
-   <% else %> 
-      <h3>Veiw Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
    <% end %>
 <% end %>
 
 <p>
-   <%= link_to "<< Back to Profiles!", profiles_path %>
+
+<%= link_to "<< Back to Profiles!", profiles_path %>
+<% if user_signed_in? %> 
    |
-   
-   <% if @profile.user_id == current_user.id %>
-      <%= link_to "Update Profile", edit_profile_path(@profile) %>
-      |
-      <%= link_to "Delete Profile", @profile, method: :delete %>
+   <% if !current_user.profile.nil? %>
+      <% if @profile.user_id == current_user.id %>
+         <%= link_to "Update Profile", edit_profile_path(@profile) %>
+         |
+         <%= link_to "Delete Profile", @profile, method: :delete %>
+      <% end %>
    <% end %>
-   
+<% end %>   
 </p>

@@ -25,7 +25,7 @@ class BoatPolicy
   end
 
   def update?
-    user.has_any_role?(:user)
+    user.has_role?(:user)
   end
 
   def edit?

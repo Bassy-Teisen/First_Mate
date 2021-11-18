@@ -1,8 +1,10 @@
 <h1>Boats Page</h1>
 
-<% if user_signed_in?%>
-    <% if current_user.profile.boat.nil? %>
-    <p><%= link_to 'Add your Boat here!', new_boat_path %></p>
+<% if user_signed_in? %>
+    <% if !current_user.profile.nil? %>
+        <% if current_user.profile.boat.nil? %>
+            <p><%= link_to 'Add your Boat here!', new_boat_path %></p>
+        <% end %>
     <% end %>
 <% end %>
 

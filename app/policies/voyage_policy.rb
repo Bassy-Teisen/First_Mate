@@ -25,7 +25,7 @@ class VoyagePolicy
   end
 
   def update?
-    user.has_any_role?(:user)
+    user.has_role?(:user)
   end
 
   def edit?
@@ -36,6 +36,10 @@ class VoyagePolicy
     create?
   end
 
+  def join?
+    update?
+  end
+  
   class Scope
     def initialize(user, scope)
       @user = user
