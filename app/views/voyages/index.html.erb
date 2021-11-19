@@ -1,4 +1,57 @@
-<h1>Voyages Page</h1>
+ <h1>Voyages Page</h1>
+ 
+
+<%
+=begin%>
+ <div class="container-fluid" >    
+    <div class="row">
+        <% @voyages.each do |voy|%>
+        <div class="col"> 
+            <div class="card" style="min-width: 16rem;">
+                <%= cl_image_tag voy.voyage_image.key, crop: :scale, class: "card-img-top", cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%>
+                <div class="card-body">
+                    <h5 class="card-title"><%= voy.user.profile.name %></h5>
+                    <p class="card-text"><%= voy.description %></p>                    
+                    <%= link_to voy.user.profile.name, voyage_path(voy.id) %>
+                </div>
+            </div>
+        </div>
+        <% end %>    
+    </div>
+</div> 
+<%
+=end%>
+
+
+
+
+ <%
+=begin%>
+ <br/><br/>
+ <div class="container" style="border: 1px solid red;">
+    <% @voyages.each do |voy|%>
+    <div class="row highlight">
+        <div class="col col-sm-6">
+            <%= voy.user.profile.name %>
+        </div> 
+        <div class="col col-sm-6">
+            <%= link_to voy.user.profile.name, voyage_path(voy.id) %>
+        </div>       
+    </div>
+    <div class="row">
+        <div class="col col-sm-6">
+            <%= voy.description %>
+        </div> 
+        <div class="col col-sm-6">
+            <%= cl_image_tag voy.voyage_image.key, crop: :scale, width: 150, cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%>
+        </div>       
+    </div>
+    <% end %>
+</div> 
+<%
+=end%>
+
+
 
 <% if user_signed_in?%>
     <% if !current_user.profile.nil? %>
@@ -20,6 +73,9 @@
     <tr>
         <td><%= cl_image_tag voy.voyage_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%></td>  
         <td>ID: <%= voy.id %></td>  
+        <% if current_user.id == voy.user.id %>
+            <td>Your Voyage!</td>
+        <% end %> 
         <td><%= link_to voy.user.profile.name, voyage_path(voy.id) %></td>           
         <td><%= voy.user.profile.name %></td>         
         <td><%= voy.user.email %></td>         
