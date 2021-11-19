@@ -63,6 +63,7 @@
             <h2>Add a boat to your profile to create a voyage: <%= link_to "Boat Link!", boats_path %></h2>
         <% end %>
     <% end %>
+    <h2> <%= link_to "About!", about_voyage_path %></h2>
 <% end %>
 
 <p><%= link_to 'Boats page', boats_path %></p>
@@ -81,11 +82,12 @@
         <td><%= link_to voy.user.profile.name, voyage_path(voy.id) %></td>           
         <td><%= voy.user.profile.name %></td>         
         <td><%= voy.user.email %></td>         
-        <% voy.appliers.each do |u| %>
-            <% if !u.profile.nil? %>
-                <td>Need if state: <%= link_to u.profile.name, profile_path(u.profile.id) %></td>
-                <td><%= u.profile.phone_number %></td>   
-                <td><%= u.id %></td>                  
+        <% voy.applied_voyages.each do |u| %>
+           
+            <% if !u.user.profile.nil? %>
+                <td>Need if state: <%= link_to u.user.profile.name, profile_path(u.user.profile.id) %></td>
+                <td><%= u.user.profile.phone_number %></td>   
+                <td><%= u.description %></td>                  
             <% end %>                 
         <% end %>
     </tr>

@@ -17,4 +17,13 @@ class User < ApplicationRecord
   def set_role
     self.add_role(:user) if self.roles.blank?
   end
+
+  def has_already_applied(id)
+    av = self.applied_voyages.find_by(voyage_id: id)
+    if av
+      return true
+    else
+      return false
+    end
+  end
 end

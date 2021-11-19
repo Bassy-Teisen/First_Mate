@@ -17,3 +17,12 @@
 
 # Profile.destroy_all
 # Profile.create!(profile)
+
+User.create!(email: "zoo@bar.com", password: "123456")
+User.create!(email: "zoo2@bar.com", password: "123456")
+Profile.create!(user: User.first, name: "foobar", phone_number: 12345678, description: "sdfghjkl")
+Profile.create!(user: User.second, name: "foobar2", phone_number: 12345678, description: "sdfghjkl")
+Boat.create!(profile: Profile.first, category: "speedy boi", size: "big", capasity: "120people", activity: "fishing")
+Voyage.create!(user: User.first, description: "this is my first voyage ;)", voyage: Date.today, launch: Time.now)
+
+AppliedVoyage.create!(user: User.last, voyage: Voyage.first)
