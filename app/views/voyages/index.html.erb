@@ -73,17 +73,19 @@
     <tr>
         <td><%= cl_image_tag voy.voyage_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%></td>  
         <td>ID: <%= voy.id %></td>  
-        <% if current_user.id == voy.user.id %>
-            <td>Your Voyage!</td>
+        <% if user_signed_in? %>
+            <% if current_user.id == voy.user.id %>
+                <td>Your Voyage!</td>
+            <% end %> 
         <% end %> 
         <td><%= link_to voy.user.profile.name, voyage_path(voy.id) %></td>           
         <td><%= voy.user.profile.name %></td>         
         <td><%= voy.user.email %></td>         
         <% voy.appliers.each do |u| %>
-            <% if u.profile.nil? %>
-            <% else %>
+            <% if !u.profile.nil? %>
                 <td>Need if state: <%= link_to u.profile.name, profile_path(u.profile.id) %></td>
                 <td><%= u.profile.phone_number %></td>   
+                <td><%= u.id %></td>                  
             <% end %>                 
         <% end %>
     </tr>

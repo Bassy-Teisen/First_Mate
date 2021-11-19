@@ -26,3 +26,7 @@
  #errors p {
     margin: 0;
  }
+
+ .notice {
+    background-color: yellow;
+ }

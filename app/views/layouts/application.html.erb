@@ -24,7 +24,9 @@
         <% end %>
       </section>
     <% end %>
-    <p class="notice"><%= notice %></p>
+    <% if flash[:notice] %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>

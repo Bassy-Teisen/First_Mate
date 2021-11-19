@@ -64,15 +64,29 @@ class VoyagesController < ApplicationController
 
   def join
     @voyage = Voyage.find(params[:id])
-    p 'blah'
-    @voyage.appliers << current_user
-    
-    
+    @applied_voyage = AppliedVoyage.new()
   end
 
   def joiner
-     redirect_to @voyage
+    @voyage = Voyage.find(params[:id])
+    they_are_already_attached = @voyage.appliers.find_by(id: current_user.id)
+    if they_are_already_attached
+      flash[:notice] = "You cannot do that"
+      render "show"
+    else
+      @applied_voyage = AppliedVoyage.new(description: params[:applied_voyage][:description])
+      @applied_voyage.user = current_user
+      @applied_voyage.voyage = @voyage
+      @applied_voyage.save!
+      # @voyage.appliers << current_user 
+      redirect_to voyage_path(@voyage)
+    end
   end
+
+  # def join_params[:review_ids].each do |review_id|
+  #   @job.job_reviews.build(review_id: review_id, user_id: current_user.id)
+  #    redirect_to @voyage
+  # end
   
   # def leave
   #   @team = Team.find params[:id]
