@@ -1,61 +1,56 @@
 
 
-<section class="bg-primary text-light p-5 text-center text-sm-start">
- <h1>Voyages Page</h1>
-            
-<% if user_signed_in?%>
-    <% if !current_user.profile.nil? %>
-        <% if !current_user.profile.boat.nil? %>
-            <% if current_user.voyage.nil? %>
-                <p>Create your own voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Add your Voyage here', new_voyage_path %></button></p>
+<section class="bg-primary text-light p-0 text-center text-sm-start h-100" >
+    <h1 class="row justify-content-center">Voyages Page</h1>
+    <% if user_signed_in?%>
+        <% if !current_user.profile.nil? %>
+            <% if !current_user.profile.boat.nil? %>
+                <% if current_user.voyage.nil? %>
+                    <p>Create your own voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Add your Voyage here', new_voyage_path %></button></p>
+                <% end %>
+            <% else %>
+                <h2>Add a boat to your profile to create a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Boats page', profiles_path %></button></h2>
             <% end %>
-        <% else %>
-            <h2>Add a boat to your profile to create a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Boats page', profiles_path %></button></h2>
         <% end %>
     <% end %>
-    
-<% end %>
-<p><button  class="btn btn-dark bitn-lg"><%= link_to 'Boats page', boats_path %></button></p>
-<p><button  class="btn btn-dark bitn-lg"><%= link_to 'Profiles page', profiles_path %></button></p>
 
-
-
-
-
-
-<section class="p-auto">
-  <div class="container">
-        <div class="row text-center">
-            <% @voyages.each do |voy|%>
-                <div class="col-md, col-lg, col-xl-4">
+    <section class="p-auto">
+        <div class="container">
+            <div class="row text-center">
+                <% @voyages.each do |voy|%>
+                    <div class="col-md, col-lg, col-xl-4 p-3">
                         <div class="card bg-dark text-light">
                             <div class="card-body text-center">
                             <h3>
-                                <%= cl_image_tag voy.user.profile.boat.boat_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if voy.user.profile.boat.boat_image.attached?%>
-                                
+                                <%= cl_image_tag voy.user.profile.boat.boat_image.key, crop: :scale, width: 100, cloud_name: 'diu8yxgel' if voy.user.profile.boat.boat_image.attached?%>
                                 <%= link_to voy.user.profile.name, voyage_path(voy.id) %>
                             </h3>
-                                <tr>                               
+                                <tr> 
+                                    <% if user_signed_in? %>
+                                        <% if current_user.id == voy.user.id %>
+                                            <h2 style="color:red">Your Voyage!</h2>
+                                        <% end %> 
+                                    <% end %>                               
                                     <td><p>Voyage Discription: <%= voy.description %></p></td>
                                     <td><p>Launch date: <%= voy.voyage %></p></td>
                                     <td><p>Launch time: <%= voy.launch %></p></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
-                            <a href="#" class="btn btn-primary"><%= link_to "Apply to join Here!", voyage_path(voy.id) %></a>
+                                    <% voy.applied_voyages.each do |u| %>
+                                        <% if !u.user.profile.nil? %>
+                                            <p><%= link_to u.user.profile.name, profile_path(u.user.profile.id) %>: Has applied!</p>               
+                                        <% end %>                 
+                                    <% end %>
+                                    <p href="#" class="btn btn-info"><%= link_to "Apply to join Here!", voyage_path(voy.id), class: "p-danger" %></p>
+                                </div>
                             </div>
-                       
-                    </div>
+                        </div>
+                    <% end %>
                 </div>
-            <% end %>
+            </div>
         </div>
-    </div>
-</div>
-
-</section>
-
-
-
+    </section>
 </section>
 
 
@@ -67,6 +62,9 @@
 
 
 
+<%
+=begin%>
+ 
     <table>
         <% @voyages.each do |voy|%>
         <tr>
@@ -90,7 +88,9 @@
             <% end %>
         </tr>
         <% end %>
-    </table>
+    </table> 
+<%
+=end%>
 
 
 

@@ -1,35 +1,50 @@
-<h1>Profiles Page</h1>
-
-
-<p><%= link_to 'Boats Page!', boats_path %></p>
-<p><%= link_to 'Voyages Page!', voyages_path %></p>
-
-<% if user_signed_in? %>
-     <% if current_user.profile.nil? %>
-    <p><%= link_to 'New Profile!', new_profile_path %></p>
-    <% end %> 
-<% end %>
-
-<table>
-    <% @profiles.each do |pro|%>
-    <tr>
-        <td><%= cl_image_tag pro.profile_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if pro.profile_image.attached?%></td> 
-        <% if user_signed_in? %>
-            <% if current_user.id == pro.user.id %>
-            <td>Your Profile!</td>
-            <% end %>  
-        <% end %>  
-        <td><%= link_to pro.name, profile_path(pro.id) %></td>    
-        <% if pro.boat.nil? %>
-            <td>What a deckhand!</td>
-        <% else %>     
-            <td>Their a captain of a: <%= link_to pro.boat.category, boat_path(pro.boat.id) %></td>  
-        <% end %>                   
-    </tr>
+<section class="bg-primary text-light p-0 text-center text-sm-start h-100" >
+    <h1 class="row justify-content-center">Profiles Page</h1>
+    <% if user_signed_in? %>
+        <% if current_user.profile.nil? %>
+                <h2>Add your Voyage here: <button  class="btn btn-dark bitn-lg"><%= link_to 'New Profile!', new_profile_path %></button></h2>
+        <% end %> 
     <% end %>
-</table>
 
 
+    <section class="p-auto">
+        <div class="container">
+            <div class="row text-center">
+                <% @profiles.each do |pro|%>
+                    <div class="col-md, col-lg, col-xl-4 p-3">
+                        <div class="card bg-dark text-light">
+                            <div class="card-body text-center">
+                                <h3>
+                                    <%= cl_image_tag pro.profile_image.key, crop: :scale, width: 100, cloud_name: 'diu8yxgel' if pro.profile_image.attached? %> 
+                                </h3>
+                                    <tr>
+                                        <% if user_signed_in? %>
+                                            <% if current_user.id == pro.user.id %>
+                                                <h2 style="color:red">Your Profile: </h2>
+                                            <% end %> 
+                                        <% end %>
+                                        <td><p>Voyage Discription: <%= pro.name %></p>
+                                        </td>
+                                        <td>
+                                        <h6>Link to Profile: <%= link_to pro.name, profile_path(pro.id) %></h6>
+                                        </td>
+                                        <td> 
+                                        <% if pro.boat.nil? %>
+                                            <td>What a deckhand!</td>
+                                        <% else %>     
+                                            <td>Their a captain of a: <%= link_to pro.boat.category, boat_path(pro.boat.id) %></td>  
+                                        <% end %>           
+                                        </td>
+                                    </tr>      
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
 
 
         <%

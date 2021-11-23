@@ -1,16 +1,32 @@
-<h1>Voyages#join</h1>
-<p><%= @voyage.id %></p>
-<p><%= current_user.id %></p>
+<section class="bg-primary text-light p-0 text-center vh-100" >
+<section class="p-auto">
+<h1>Join</h1>
+ <div class="container">
+   <div class="row text-center">
+      <div class="col-md p-3">
+         <div class="container lg d-flex justify-content-center p-4">
+            <div class="card bg-success text-light">
+               <div class="card-body text-center">
+                <%= form_with model: @applied_voyage, url: joiner_voyage_path do |f| %>
+                    <p>
+                        <%= f.label "What can you offer for the voyage" %>
+                    </p>
+                    <p>
+                        <%= f.text_area :description, cols: "50%", rows: "10vh" %>
+                    </p>
+                    <p>
+                        <%= f.submit 'Join Voyage' %>
+                    </p>
 
-<%= form_with model: @applied_voyage, url: joiner_voyage_path do |f| %>
-    <p>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
-    </p>
-    <p>
-        <%= f.submit 'Join Voyage' %>
-    </p>
+                <% end %>
 
-<% end %>
+               
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>
+</section>
+    <button  class="btn btn-dark bitn-lg"><%= link_to "<< Back to Voyages", voyages_path %></button>
 
-<%= link_to "<< Back to Voyages", voyages_path %> 
+</section>

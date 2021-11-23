@@ -1,26 +1,42 @@
-<h1>Voyages#show</h1>
 
 
-<h3>Description: <%= @voyage.description %></h3>
-<h3>Voyage date: <%= @voyage.voyage %></h3>
-<h3>Launch Time: <%= @voyage.launch %></h3>
-<td><%= cl_image_tag @voyage.voyage_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if @voyage.voyage_image.attached?%></td>  
+<section class="bg-primary text-light p-0 text-center vh-100" >
+<h1 class="row justify-content-center">Show Page</h1>
+
+<section class="p-auto">
+ <div class="container">
+   <div class="row text-center">
+      <div class="col-md p-3">
+         <div class="container lg d-flex justify-content-center p-4">
+            <div class="card bg-success text-light">
+               <div class="card-body text-center">
+                  <td><%= cl_image_tag @voyage.voyage_image.key, crop: :scale, width: 300, cloud_name: 'diu8yxgel' if @voyage.voyage_image.attached?%></td>  
+                  <h3 class="p-2">Description: <%= @voyage.description %></h3>
+                  <h3 class="p-2">Voyage date: <%= @voyage.voyage %></h3>
+                  <h3 class="p-2">Launch Time: <%= @voyage.launch %></h3> 
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>
+</section>
       
       
 <p>
-   <%= link_to "<< Back to Voyages", voyages_path %>
+    <button  class="btn btn-dark bitn-lg"><%= link_to "<< Back to Voyages", voyages_path %></button>
    |
 <% if user_signed_in? %>
    <% if @voyage.user_id == current_user.id %>
-      <%= link_to "Update Voyage", edit_voyage_path(@voyage) %> 
+      <button  class="btn btn-dark bitn-lg"><%= link_to "Update Voyage", edit_voyage_path(@voyage) %> </button>
       |
       <%= link_to "Delete Voyage", @voyage, method: :delete %>
    <% else %>
       <% if current_user.has_already_applied(@voyage.id) %> 
          <h2> Already requested to join this voyage! </h2>
       <% else %>
-         <%= link_to "Join Voyage", join_voyage_path(@voyage) %> 
+         <button  class="btn btn-dark bitn-lg"><%= link_to "Join Voyage", join_voyage_path(@voyage) %> </button>
       <% end %>
    <% end %>
 <% end %>
 </p>
+</section>
