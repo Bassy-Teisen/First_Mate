@@ -1,27 +1,42 @@
-<%= form_with model: @boat do |f| %>
-    <p>
-        <%= f.label :category %>
-        <%= f.text_field :category %>
-    </p>
-    <p>
-        <%= f.label :boat_image %>
-        <%= f.file_field :boat_image %>
-    </p>
-    <p>
-        <%= f.label :size %>
-        <%= f.text_field :size %>
-    </p>
-    <p>
-        <%= f.label :capasity %>
-        <%= f.text_field :capasity %>
-    </p>
-    <p>
-        <%= f.label :activity %>
-        <%= f.text_field :activity %>
-    </p>
-    <p>
-        <%= f.submit caption %>
-    </p>
-<% end %>
+<section class="bg-primary text-light p-0 text-center vh-100" >
+    <section class="p-auto"> 
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md p-3">
+                    <div class="container lg d-flex justify-content-center p-4">
+                        <div class="card bg-success text-light">
+                            <div class="card-body text-center">  
+                                <%= form_with model: @boat do |f| %>
+                                    <p>
+                                        <%= f.label :category %>
+                                        <%= f.text_field :category %>
+                                    </p>
+                                    <p>
+                                        <%= f.label :boat_image %>
+                                        <%= f.file_field :boat_image %>
+                                    </p>
+                                    <p>
+                                        <%= f.label :size %>
+                                        <%= f.text_field :size %>
+                                    </p>
+                                    <p>
+                                        <%= f.label :capasity %>
+                                        <%= f.text_field :capasity %>
+                                    </p>
+                                    <p>
+                                        <%= f.label :activity %>
+                                        <%= f.text_field :activity %>
+                                    </p>
+                                    <p>
+                                        <%= f.submit caption %>
+                                    </p>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>                                
+    <button  class="btn btn-dark bitn-lg"><%= link_to "<< Back to Boats!", boats_path %></button>
+</section>
 
-<%= link_to "<< Back to Boats!", boats_path %>

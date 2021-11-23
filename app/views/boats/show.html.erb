@@ -1,20 +1,30 @@
-<h1><%= @boat.profile.name %></h1>
-
-<h3>Category: <%= @boat.category %></h3>
-<h3>Boat size: <%= @boat.size %></h3>
-<h3>Capasity: <%= @boat.capasity %></h3>
-<h3>Activity: <%= @boat.activity %></h3>
-
-<td><%= cl_image_tag @boat.boat_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if @boat.boat_image.attached?%></td>  
- 
-<p>
-   <%= link_to "<< Back to Boats!", boats_path %>
-   |
-<% if user_signed_in? %>
-   <% if @boat.profile.user_id == current_user.id %>
-      <%= link_to "Update Boat!", edit_boat_path(@boat) %> 
-      |
-      <%= link_to "Delete Profile!", @boat, method: :delete %>
-   <% end %>
-<% end %>
-</p>
+<h1></h1>
+<section class="bg-primary text-light p-0 text-center vh-100" >
+   <h1 class="row justify-content-center"><%= @boat.profile.name %></h1>
+   <section class="p-auto">
+      <div class="container">
+         <div class="row text-center">
+            <div class="col-md p-3">
+               <div class="container lg d-flex justify-content-center p-4">
+                  <div class="card bg-success text-light">
+                     <div class="card-body text-center">
+                        <td><%= cl_image_tag @boat.boat_image.key, crop: :scale, width: 200, cloud_name: 'diu8yxgel' if @boat.boat_image.attached?%></td>  
+                        <h3>Category: <%= @boat.category %></h3>
+                        <h3>Boat size: <%= @boat.size %></h3>
+                        <h3>Capasity: <%= @boat.capasity %></h3>
+                        <h3>Activity: <%= @boat.activity %></h3>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <button  class="btn btn-dark bitn-lg"><%= link_to "<< Back to Boats!", boats_path %></button>
+      <% if user_signed_in? %>
+         <% if @boat.profile.user_id == current_user.id %>
+            <button  class="btn btn-dark bitn-lg"><%= link_to "Update Boat!", edit_boat_path(@boat) %></button>
+            <button  class="btn btn-dark bitn-lg"><%= link_to "Delete Profile!", @boat, method: :delete %></button>   
+         <% end %>
+      <% end %>
+   </section>
+</section>

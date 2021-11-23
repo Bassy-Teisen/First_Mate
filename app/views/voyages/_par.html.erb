@@ -1,39 +1,36 @@
 
 <section class="bg-primary text-light p-0 text-center vh-100" >
-<section class="p-auto"> 
- <div class="container">
-   <div class="row text-center">
-      <div class="col-md p-3">
-         <div class="container lg d-flex justify-content-center p-4">
-            <div class="card bg-success text-light">
-               <div class="card-body text-center">
-                    <%= form_with model: @voyage do |f| %>
-
-                        <p>
-                            <%= f.label :description %>
-                            <%= f.text_field :description %>
-                        </p>
-                        <p>
-                            <%= f.label :Launch_date %>
-                            <%= f.date_field :voyage %>
-                        </p>
-                        <p>
-                            <%= f.label :Launch_time %>
-                            <%= f.time_field :launch %>
-                        </p>
-                        <p>
-                            <%= f.submit 'Create new Voyage' %>
-                        </p>
-
-                    <% end %>
+    <section class="p-auto"> 
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md p-3">
+                    <div class="container lg d-flex justify-content-center p-4">
+                        <div class="card bg-success text-light">
+                            <div class="card-body text-center">
+                                <%= form_with model: @voyage do |f| %>
+                                <p>
+                                    <%= f.label :description %>
+                                    <%= f.text_field :description %>
+                                </p>
+                                <p>
+                                    <%= f.label :Launch_date %>
+                                    <%= f.date_field :voyage %>
+                                </p>
+                                <p>
+                                    <%= f.label :Launch_time %>
+                                    <%= f.time_field :launch %>
+                                </p>
+                                <p>
+                                    <%= f.submit 'Create new Voyage' %>
+                                </p>
+                            <% end %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-  </div>
-</section>
+    </section>
     <button  class="btn btn-dark bitn-lg"><%= link_to "<< Back to Voyages", voyages_path %></button>
-
 </section>
    
 

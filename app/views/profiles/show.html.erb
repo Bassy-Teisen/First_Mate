@@ -1,37 +1,44 @@
-<h1>Profile Page</h1>
+<section class="bg-primary text-light p-0 text-center vh-100" >
+   <h1 class="row justify-content-center">Profile Page</h1>
 
-<h1></h1>
-<% if @profile.boat.nil? %>
-   <h2><%= @profile.name %> Is a Deckhand!</h2>
-<% else %>
-   <h2><%= @profile.name %> Is a Captain!</h2>
-<% end %>
-<td><%= cl_image_tag @profile.profile_image.key, crop: :scale, width: 150, cloud_name: 'diu8yxgel' if @profile.profile_image.attached?%></td>
-
-<h3>Personal description: <%= @profile.description %></h3>
-<h3>Personal Phone number: <%= @profile.phone_number %></h3>
-|
-<% if user_signed_in? %>
-   <% if current_user.id == @profile.user.id %>
-      <% if @profile.boat.nil? %>
-         <h2>To become a Captain add your boat here: <%= link_to "Boat Link!", new_boat_path(@profile.id) %></h2>
-      <% else %> 
-         <h3>Veiw Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
-      <% end %>
-   <% end %>
-<% end %>
-
-<p>
-
-<%= link_to "<< Back to Profiles!", profiles_path %>
-<% if user_signed_in? %> 
-   |
-   <% if !current_user.profile.nil? %>
-      <% if @profile.user_id == current_user.id %>
-         <%= link_to "Update Profile", edit_profile_path(@profile) %>
-         |
-         <%= link_to "Delete Profile", @profile, method: :delete %>
-      <% end %>
-   <% end %>
-<% end %>   
-</p>
+   <section class="p-auto">
+      <div class="container">
+         <div class="row text-center">
+            <div class="col-md p-3">
+               <div class="container lg d-flex justify-content-center p-4">
+                  <div class="card bg-success text-light">
+                     <div class="card-body text-center">
+                     <td><%= cl_image_tag @profile.profile_image.key, crop: :scale, width: 150, cloud_name: 'diu8yxgel' if @profile.profile_image.attached?%></td>
+                        <% if @profile.boat.nil? %>
+                           <h2><%= @profile.name %> Is a Deckhand!</h2>
+                        <% else %>
+                           <h2><%= @profile.name %> Is a Captain!</h2>
+                        <% end %>
+                           <h3>Personal description: <%= @profile.description %></h3>
+                           <h3>Personal Phone number: <%= @profile.phone_number %></h3>
+                        <% if user_signed_in? %>
+                           <% if current_user.id == @profile.user.id %>
+                              <% if @profile.boat.nil? %>
+                                 <h2 >To become a Captain add your boat here: <button  class="btn btn-dark bitn-lg"><%= link_to "Boat Link!", new_boat_path(@profile.id), class: "p-danger" %></button></h2>
+                              <% else %> 
+                                 <h3>Veiw Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
+                              <% end %>
+                           <% end %>
+                        <% end %>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <button  class="btn btn-dark bitn-lg"><%= link_to "<< Back to Profiles", profiles_path %></button>
+      <% if user_signed_in? %> 
+         <% if !current_user.profile.nil? %>
+            <% if @profile.user_id == current_user.id %>
+               <button  class="btn btn-dark bitn-lg"><%= link_to "Update Profile", edit_profile_path(@profile) %></button>
+               <button  class="btn btn-dark bitn-lg"><%= link_to "Delete Profile", @profile, method: :delete %></button>
+            <% end %>
+         <% end %>
+      <% end %> 
+   </section>
+</section>
