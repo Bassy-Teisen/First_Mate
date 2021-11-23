@@ -1,42 +1,66 @@
-<div class="container-sm", class="container-md">
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <div class="container">
-        <a href="#" class="navbar-brand">About page</a>
-        <button 
-            class="navbar-toggler"
-            type="button" 
-            data-bs-toggle="collapse"
-            data-bs-target="#navbar"
-            >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item ">
-                    <a href="#learn " class="nav-link">Voyage</a>    
-                </li>
-                <li class="nav-item">
-                    <a href="#questions" class="nav-link">Profile</a>    
-                </li>
-                <li class="nav-item">
-                    <a href="#instructors" class="nav-link">Boat</a>    
-                </li>
 
-            </ul>
+
+<%
+=begin%>
+ <section>
+    <div class="container">
+        <h1>By The Lake</h1>    
+        <div class="row">
+            <div class="col-md-7">
+                <p>To leave no boat in the driveway, no yacht in the dock and no boater left on dry!</p>
+            </div>
         </div>
     </div>
-</nav>
+</section> 
+<%
+=end%>
 
-<section class="bg-dark text-light p-5 text-center text-sm-start">
+
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">About page</a>
+            <button 
+                class="navbar-toggler"
+                type="button" 
+                data-bs-toggle="collapse"
+                data-bs-target="#navbar"
+                >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item ">
+                        <a href="#learn " class="nav-link">Voyage</a>    
+                    </li>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link">Profile</a>    
+                    </li>
+                    <li class="nav-item">
+                        <a href="#instructors" class="nav-link">Boat</a>    
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<section class="bg-primary text-light p-5 text-center text-sm-start">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
                 <h1>Become a <span class="text-warning">first mate</
                 span>  member</h1>
                 <p class="lead my-4">
-                    dfgssssssssssssssssssssssssssssssssssssssreeeeeeeeeeeeeeeee
+                    Leave no boat in the driveway, no yacht in the dock and no boater left on dry!
+Help out by creating a profile and join in a voyage!
                 </p>
-                <button class="btn btn-primary bitn-lg">Create a Profile here</button>
+                <button  class="btn btn-dark bitn-lg"><%= link_to 'Profiles page', profiles_path %></button>
             </div>
             <img 
                 class="img-fluid w-50 d-none d-sm-block" 
@@ -47,7 +71,45 @@
     </div>
 </section>
 
-
+<section class="p-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md">
+                <div class="card bg-dark text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h3>
+                            Virtual
+                        </h3>
+                        <p class="cared-text">
+                            asghdfgsdfghjrtsytrhubugfyhbydgtfs
+                        </p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg-secondary text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-person-square"></i>
+                        </div>
+                        <h3>
+                            Virtual
+                        </h3>
+                        <p class="cared-text">
+                            asghdfgsdfghjrtsytrhubugfyhbydgtfs
+                        </p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div></div>
+            <div class="col-md">123</div>
+        </div>   
+    </div>
+</div>
+</section>
 
 
 
@@ -73,7 +135,7 @@
     </div>
 </div>
 <h2>
-To leave no boat in the driveway, no yacht in the dock and no boaty left behind!
+To leave no boat in the driveway, no yacht in the dock and no boater left on dry!
 </h2>
 <h3>Help out by creating a profile and joining in a voyage!</h3>
 <p>Boats</p>
@@ -82,4 +144,3 @@ To leave no boat in the driveway, no yacht in the dock and no boaty left behind!
 <%= image_tag("surfing_cat.jpg") %>
 <p>People</p>
 <%= image_tag("surfing_cat.jpg") %>
-</div>
