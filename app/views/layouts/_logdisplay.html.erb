@@ -1,29 +1,57 @@
-<section id="valdisplay">
+<section id="logdisplay">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
     <% if user_signed_in? %>
         <%= current_user.email %>
         |
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
         <% if current_user.profile.nil? %>
         <% else %>
             <p>Profile: <%= current_user.profile.name %></p>
         <% end %>
     <% else %>
-        <h1>
-            Login 
-            <small class="text-muted">or Sign Up Below</small>
+        <h1> 
+            <small class="text-muted">To create a profile and join a voyage Sign Up Here</small>
         </h1>
-
-        <%
-=begin%>
- <div class="btn-group">
+        <div class="btn-group">
             <%= link_to "Login", new_user_session_path, class: "btn btn-primary active" %>
             <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
         </div> 
+    <% end %>
+        <a href="#" class="navbar-brand"><%= link_to 'Profiles page', profiles_path %></a>
+        <button 
+            class="navbar-toggler"
+            type="button" 
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar"
+            >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+</section>
+
+</nav>
+
+ <%
+=begin%>
+ <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <% unless current_page?(voyages_path) || current_page?(voyage_path) %>
+                    <li class="nav-item ">
+                        <a href="#learn " class="nav-link">Voyage</a>    
+                    </li>
+                <% end %>
+                <% unless current_page?(profiles_path) || current_page?(profile_path) %>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link">Profile</a>    
+                    </li>                    
+                <% end %>
+                <% unless current_page?(boats_path) || current_page?(boat_path) %>
+                    <li class="nav-item">
+                    <a href="#instructors" class="nav-link">Boat</a>    
+                <% end %>
+                </li>
+            </ul>
+        </div>  
 <%
 =end%>
 
-        <%= link_to "Login", new_user_session_path %>
-        |
-        <%= link_to "Sign Up", new_user_registration_path %>
-    <% end %>
-</section>

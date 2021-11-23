@@ -16,6 +16,9 @@
 * {
     padding: .25rem;
 }
+
+
+
  #errors {
     margin: 0.5rem 0;
     padding: 0.25rem o.5rem;
@@ -27,6 +30,17 @@
     margin: 0;
  }
 
+
  .notice {
-    background-color: yellow;
+    
  }
+ 
+ .collg {
+    min-width: 25rem;
+ }
+ /* .col-md {
+    min-width:20rem;
+ }
+.col-sm {
+   min-width: 0;
+} */

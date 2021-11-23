@@ -1,5 +1,113 @@
+
+
+<section class="bg-primary text-light p-5 text-center text-sm-start">
  <h1>Voyages Page</h1>
- 
+            
+<% if user_signed_in?%>
+    <% if !current_user.profile.nil? %>
+        <% if !current_user.profile.boat.nil? %>
+            <% if current_user.voyage.nil? %>
+                <p>Create your own voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Add your Voyage here', new_voyage_path %></button></p>
+            <% end %>
+        <% else %>
+            <h2>Add a boat to your profile to create a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Boats page', profiles_path %></button></h2>
+        <% end %>
+    <% end %>
+    
+<% end %>
+<p><button  class="btn btn-dark bitn-lg"><%= link_to 'Boats page', boats_path %></button></p>
+<p><button  class="btn btn-dark bitn-lg"><%= link_to 'Profiles page', profiles_path %></button></p>
+
+
+
+
+
+
+<section class="p-auto">
+  <div class="container">
+        <div class="row text-center">
+            <% @voyages.each do |voy|%>
+                <div class="col-md, col-lg, col-xl-4">
+                        <div class="card bg-dark text-light">
+                            <div class="card-body text-center">
+                            <h3>
+                                <%= cl_image_tag voy.user.profile.boat.boat_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if voy.user.profile.boat.boat_image.attached?%>
+                                
+                                <%= link_to voy.user.profile.name, voyage_path(voy.id) %>
+                            </h3>
+                                <tr>                               
+                                    <td><p>Voyage Discription: <%= voy.description %></p></td>
+                                    <td><p>Launch date: <%= voy.voyage %></p></td>
+                                    <td><p>Launch time: <%= voy.launch %></p></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            <a href="#" class="btn btn-primary"><%= link_to "Apply to join Here!", voyage_path(voy.id) %></a>
+                            </div>
+                       
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+</section>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+    <table>
+        <% @voyages.each do |voy|%>
+        <tr>
+            <td><%= cl_image_tag voy.voyage_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%></td>  
+            <td>ID: <%= voy.id %></td>  
+            <% if user_signed_in? %>
+                <% if current_user.id == voy.user.id %>
+                    <td>Your Voyage!</td>
+                <% end %> 
+            <% end %> 
+            <td><%= link_to voy.user.profile.name, voyage_path(voy.id) %></td>           
+            <td><%= voy.user.profile.name %></td>         
+            <td><%= voy.user.email %></td>         
+            <% voy.applied_voyages.each do |u| %>
+            
+                <% if !u.user.profile.nil? %>
+                    <td>Need if state: <%= link_to u.user.profile.name, profile_path(u.user.profile.id) %></td>
+                    <td><%= u.user.profile.phone_number %></td>   
+                    <td><%= u.description %></td>                  
+                <% end %>                 
+            <% end %>
+        </tr>
+        <% end %>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <%
 =begin%>
@@ -50,46 +158,3 @@
 </div> 
 <%
 =end%>
-
-
-
-<% if user_signed_in?%>
-    <% if !current_user.profile.nil? %>
-        <% if !current_user.profile.boat.nil? %>
-            <% if current_user.voyage.nil? %>
-                <p><%= link_to 'Add your Voyage here', new_voyage_path %></p>
-            <% end %>
-        <% else %>
-            <h2>Add a boat to your profile to create a voyage: <%= link_to "Boat Link!", boats_path %></h2>
-        <% end %>
-    <% end %>
-    <h2> <%= link_to "About!", about_voyage_path %></h2>
-<% end %>
-
-<p><%= link_to 'Boats page', boats_path %></p>
-<p><%= link_to 'Profiles page', profiles_path %></p>
-
-<table>
-    <% @voyages.each do |voy|%>
-    <tr>
-        <td><%= cl_image_tag voy.voyage_image.key, crop: :scale, width: 50, cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%></td>  
-        <td>ID: <%= voy.id %></td>  
-        <% if user_signed_in? %>
-            <% if current_user.id == voy.user.id %>
-                <td>Your Voyage!</td>
-            <% end %> 
-        <% end %> 
-        <td><%= link_to voy.user.profile.name, voyage_path(voy.id) %></td>           
-        <td><%= voy.user.profile.name %></td>         
-        <td><%= voy.user.email %></td>         
-        <% voy.applied_voyages.each do |u| %>
-           
-            <% if !u.user.profile.nil? %>
-                <td>Need if state: <%= link_to u.user.profile.name, profile_path(u.user.profile.id) %></td>
-                <td><%= u.user.profile.phone_number %></td>   
-                <td><%= u.description %></td>                  
-            <% end %>                 
-        <% end %>
-    </tr>
-    <% end %>
-</table>
