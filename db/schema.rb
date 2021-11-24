@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_004828) do
+ActiveRecord::Schema.define(version: 2021_11_24_012204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(version: 2021_11_24_004828) do
     t.index ["voyage_id"], name: "index_galleries_on_voyage_id"
   end
 
+  create_table "gallery_reviews", force: :cascade do |t|
+    t.bigint "reviewer_id", null: false
+    t.bigint "reviewee_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reviewee_id"], name: "index_gallery_reviews_on_reviewee_id"
+    t.index ["reviewer_id"], name: "index_gallery_reviews_on_reviewer_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name", limit: 50
     t.string "phone_number", limit: 15
@@ -130,6 +139,8 @@ ActiveRecord::Schema.define(version: 2021_11_24_004828) do
   add_foreign_key "applied_voyages", "voyages"
   add_foreign_key "boats", "profiles"
   add_foreign_key "galleries", "voyages"
+  add_foreign_key "gallery_reviews", "users", column: "reviewee_id"
+  add_foreign_key "gallery_reviews", "users", column: "reviewer_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "voyages", "users"
 end

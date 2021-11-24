@@ -11,16 +11,13 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-    <link rel="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
   
-
   </head>
 
   <body>
+  <a name="top"></a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <%= render 'layouts/logdisplay' %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <%= render 'layouts/navdisplay' %>
     <% if flash[:errors] %>
       <section id="errors">
         <% flash[:errors].each do |error| %>
@@ -32,9 +29,9 @@
       <p class="notice"><%= notice %></p>
     <% end %>
     <p class="alert"><%= alert %></p>
+    <%= render 'layouts/footerdisplay' %>
     <%= yield %>
   </body>
-  <%= render 'layouts/footerdisplay' %>
 </html>
 
 

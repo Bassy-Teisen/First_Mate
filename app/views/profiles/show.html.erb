@@ -1,5 +1,5 @@
 <section class="bg-primary text-light p-0 text-center vh-100" >
-   <h1 class="row justify-content-center">Profile Page</h1>
+   <h1 class="row justify-content-center"><%= @profile.name %>'s profile</h1>
 
    <section class="p-auto">
       <div class="container">
@@ -21,7 +21,7 @@
                               <% if @profile.boat.nil? %>
                                  <h2 >To become a Captain add your boat here: <button  class="btn btn-dark bitn-lg"><%= link_to "Boat Link!", new_boat_path(@profile.id), class: "p-danger" %></button></h2>
                               <% else %> 
-                                 <h3>Veiw Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id) %></h3>
+                                 <h3>Veiw Boat: <%= link_to @profile.boat.category, boat_path(@profile.boat.id), class: 'p-warning' %></h3>
                               <% end %>
                            <% end %>
                         <% end %>

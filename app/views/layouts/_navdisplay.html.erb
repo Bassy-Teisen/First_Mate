@@ -1,46 +1,47 @@
-
-    <section class="container" >
-        <nav class="navbar navbar-expand-md navbar-light">
-            <a href="#" class="navbar-brand">First Mate</a>
-            <button 
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#toggleMobileMenu"
-                aria-controls="toggleMobileMenu"
-                aria-expanded="false"
-                aria-lable="Toggle navigation"          
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="toggleMobileMenu ">
-                <ul class="navbar-nav float-right text-end ">
-                    <% if user_signed_in? %>
-                    <li class="p-1">
-                        <%= link_to "Profiles Page", profiles_path, class: "btn btn-primary" %>
-                    </li>
-                    <li class="p-1">
-                        <%= link_to "Voyages Page", voyages_path, class: "btn btn-primary" %>
-                    </li>
-                    <li class="p-1">
-                        <%= link_to "Boats Page", boats_path, class: "btn btn-primary" %>
-                    </li>
-                    <li class="p-1">
-                        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
-                    </li>
-                    <% else %>
-                    <li>
-                         <%= link_to "Login", new_user_session_path, class: "btn btn-primary active" %>
-                    </li>
-                    <li>
-                        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-                    </li> 
-                    <% end %>
-
-                </ul>        
-            </div>
-        </nav>
-    </section> 
+<section class="container" >
+    <nav class="navbar navbar-expand-md navbar-light">
+        <a href="#" class="navbar-brand">First Mate</a>
+        <button 
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#toggleMobileMenu"
+            aria-controls="toggleMobileMenu"
+            aria-expanded="false"
+            aria-lable="Toggle navigation"          
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="toggleMobileMenu ">
+            <ul class="navbar-nav float-right text-end">
+                <% if user_signed_in? %>
+                <li class="p-1">
+                    <%= link_to "Profiles Page", profiles_path, class: "btn btn-primary" %>
+                </li>
+                <li class="p-1">
+                    <%= link_to "Voyages Page", voyages_path, class: "btn btn-primary" %>
+                </li>
+                <li class="p-1">
+                    <%= link_to "Boats Page", boats_path, class: "btn btn-primary" %>
+                </li>
+                <li class="p-1">
+                    <%= link_to "About Page", about_voyage_path, class: "btn btn-primary" %>
+                </li>
+                <li class="p-1">
+                    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+                </li>
+                <% else %>
+                <li>
+                        <%= link_to "Login", new_user_session_path, class: "btn btn-primary active" %>
+                </li>
+                <li>
+                    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+                </li> 
+                <% end %>
+            </ul>        
+        </div>
+    </nav>
+</section> 
 
 
 

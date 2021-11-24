@@ -1,7 +1,7 @@
 
 
 <section class="bg-primary text-light p-0 text-center vh-100" >
-<h1 class="row justify-content-center">Show Page</h1>
+<h1 class="row justify-content-center"><%= @voyage.user.profile.name %>'s voyage</h1>
 
 <section class="p-auto">
  <div class="container">
@@ -27,7 +27,7 @@
    |
 <% if user_signed_in? %>
    <% if @voyage.user_id == current_user.id %>
-      <button  class="btn btn-dark bitn-lg"><%= link_to "Update Voyage", edit_voyage_path(@voyage) %> </button>
+      p-3
       |
       <%= link_to "Delete Voyage", @voyage, method: :delete %>
    <% else %>

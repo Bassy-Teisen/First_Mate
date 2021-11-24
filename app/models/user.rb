@@ -2,6 +2,14 @@ class User < ApplicationRecord
   
   after_create :set_role
 
+  has_many :reviews_made, class_name: "GalleryReview", foreign_key: :reviewer_id
+  has_many :reviews_of, class_name: "GalleryReview", foreign_key: :reviewee_id
+
+
+
+
+
+
   rolify
   
  
@@ -13,6 +21,9 @@ class User < ApplicationRecord
   has_one :voyage
   has_many :applied_voyages
   has_many :applied, through: :applied_voyages, source: :voyage
+
+  has_many :gallery_reviews
+  has_many :reviewed, through: :gallery_reviews, source: :gallery
 
   def set_role
     self.add_role(:user) if self.roles.blank?

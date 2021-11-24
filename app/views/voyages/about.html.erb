@@ -1,64 +1,12 @@
-
-
-<%
-=begin%>
- <section>
-    <div class="container">
-        <h1>By The Lake</h1>    
-        <div class="row">
-            <div class="col-md-7">
-                <p>To leave no boat in the driveway, no yacht in the dock and no boater left on dry!</p>
-            </div>
-        </div>
-    </div>
-</section> 
-<%
-=end%>
-
-
-
-
-
-
-
-
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div class="container-md">
-            <a href="#" class="navbar-brand">About page</a>
-            <button 
-                class="navbar-toggler"
-                type="button" 
-                data-bs-toggle="collapse"
-                data-bs-target="#navbar"
-                >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item ">
-                        <a href="#learn " class="nav-link">Voyage</a>    
-                    </li>
-                    <li class="nav-item">
-                        <a href="#questions" class="nav-link">Profile</a>    
-                    </li>
-                    <li class="nav-item">
-                        <a href="#instructors" class="nav-link">Boat</a>    
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-
-<section class="bg-primary text-light p-5 text-center text-sm-start">
+<section class="bg-primary text-light text-center text-sm-start vh-100">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
                 <h1>Become a <span class="text-warning">first mate</
                 span>  member</h1>
                 <p class="lead my-4">
-                    Leave no boat in the driveway, no yacht in the dock and no boater left on dry!
-Help out by creating a profile and join in a voyage!
+                    Our goal is leave no boat in the driveway, no yacht in the dock and no boater left on dry!
+                    Help out by creating a profile and joining a voyage!
                 </p>
                 <button  class="btn btn-dark bitn-lg"><%= link_to 'Profiles page', profiles_path %></button>
             </div>
@@ -69,61 +17,61 @@ Help out by creating a profile and join in a voyage!
             />
         </div>
     </div>
-</section>
 
-<section class="p-5">
+
+    <section class="p-auto">
     <div class="container">
         <div class="row text-center">
-                <div class="col-md">
-                    <div class="card bg-dark text-light">
+            <div class="col-md p-2">
+                <div class="card bg-success text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h3>
+                            Profiles
+                        </h3>
+                        <p class="cared-text">
+                            Get started by creating a profile!
+                        </p>
+                        <button  class="btn btn-warning  bitn-lg"><%= link_to "Profiles", profiles_path, class: "p-danger" %></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md p-2">
+                <div class="card bg-success text-light">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-person-square"></i>
+                        </div>
+                        <h3>
+                            Boats
+                        </h3>
+                        <p class="cared-text">
+                            Then if you have a boat add it here!
+                        </p>
+                        <button  class="btn btn-warning  bitn-lg"><%= link_to "Boats", boats_path, class: "p-danger" %></button>
+                    </div>
+                </div></div>
+                <div class="col-md p-2">
+                    <div class="card bg-success text-light">
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-laptop"></i>
+                                <i class="bi bi-person-square"></i>
                             </div>
                             <h3>
-                                Virtual
+                                Voyages
                             </h3>
                             <p class="cared-text">
-                                asghdfgsdfghjrtsytrhubugfyhbydgtfs
+                                Join a voyage or if you have a boat create your own voyage for others to join!
                             </p>
-                            <a href="#" class="btn btn-primary">Read More</a>
+                                <button  class="btn btn-warning bitn-lg"><%= link_to "Voyages", voyages_path, class: "p-danger" %></button>
                         </div>
                     </div>
                 </div>
-                        <div class="col-md">
-                            <div class="card bg-secondary text-light">
-                                <div class="card-body text-center">
-                                    <div class="h1 mb-3">
-                                        <i class="bi bi-person-square"></i>
-                                    </div>
-                                    <h3>
-                                        Virtual
-                                    </h3>
-                                    <p class="cared-text">
-                                        asghdfgsdfghjrtsytrhubugfyhbydgtfs
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Read More</a>
-                                </div>
-                            </div></div>
-                        <div class="col-md">
-                            <div class="card bg-secondary text-light">
-                                <div class="card-body text-center">
-                                    <div class="h1 mb-3">
-                                        <i class="bi bi-person-square"></i>
-                                    </div>
-                                    <h3>
-                                        Virtual
-                                    </h3>
-                                    <p class="cared-text">
-                                        asghdfgsdfghjrtsytrhubugfyhbydgtfs
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Read More</a>
-                                </div>
-                            </div></div>
-                        
-        </div>   
-    </div>
-</div>
+            </div>
+        </div>
+    </section>
 </section>
 
 
@@ -135,27 +83,3 @@ Help out by creating a profile and join in a voyage!
 
 
 
-<%= image_tag("surfing_cat.jpg") %>
- <%
-=begin%>
- <td><%= cl_image_tag voy.voyage_image.key, crop: :scale, width: 300, cloud_name: 'diu8yxgel' if voy.voyage_image.attached?%></td>  
-<%
-=end%>
-
-
-<div class="container" >
-    <div class="row justify-content-center">
-        <div class="col-sm- col-md-8 col-lg-8 "><div class="p-3 border bg-light d-inline-flex p-2" ><h1>Our moto</h1></div></div>
-   
-    </div>
-</div>
-<h2>
-To leave no boat in the driveway, no yacht in the dock and no boater left on dry!
-</h2>
-<h3>Help out by creating a profile and joining in a voyage!</h3>
-<p>Boats</p>
-<%= image_tag("surfing_cat.jpg") %>
-<p>Yachts</p>
-<%= image_tag("surfing_cat.jpg") %>
-<p>People</p>
-<%= image_tag("surfing_cat.jpg") %>
