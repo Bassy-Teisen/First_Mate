@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
- 
-  get 'galleries/index'
-  get 'galleries/new'
-  get 'galleries/create'
-  get 'galleries/show'
-  get 'galleries/edit'
-  get 'galleries/update'
-  get 'galleries/destroy'
+  
   devise_for :users
+ 
+  get 'galleries', to: 'galleries#index', as: 'galleries'
+  post 'galleries', to: 'galleries#create'
+  get 'galleries/new', to: 'galleries#new', as: 'new_gallery'
+  get 'galleries/:id/edit', to: 'galleries#edit', as: 'edit_gallery'
+  get 'galleries/:id', to: 'galleries#show', as: 'gallery'
+  patch 'galleries/:id', to: 'galleries#update'
+  delete 'galleries/:id', to: 'galleries#destroy'
 
   get 'voyages', to: 'voyages#index', as: 'voyages'
   post 'voyages', to: 'voyages#create'

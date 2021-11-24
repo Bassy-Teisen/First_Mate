@@ -40,9 +40,6 @@ class VoyagesController < ApplicationController
   def edit
     @voyage = Voyage.find(params[:id])
     @profiles = Profile.order(:name)
-    p "blah"
-    p "blah"
-    p "blah"
   end
 
   def update
@@ -82,17 +79,6 @@ class VoyagesController < ApplicationController
       redirect_to voyage_path(@voyage)
     end
   end
-
-  # def join_params[:review_ids].each do |review_id|
-  #   @job.job_reviews.build(review_id: review_id, user_id: current_user.id)
-  #    redirect_to @voyage
-  # end
-  
-  # def leave
-  #   @team = Team.find params[:id]
-  #   current_user.update_attribute(:team_id, nil)
-  #   redirect_to @team
-  # end
 
   def voyage_params 
     params.require(:voyage).permit(:description, :launch, :voyage, :profile_id, :voyage_image)
