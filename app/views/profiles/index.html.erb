@@ -2,7 +2,7 @@
     <h1 class="row justify-content-center">Profiles Page</h1>
     <% if user_signed_in? %>
         <% if current_user.profile.nil? %>
-                <h2>Add your Voyage here: <button  class="btn btn-dark bitn-lg"><%= link_to 'New Profile!', new_profile_path %></button></h2>
+                <h2 class="pad">Add your Profile here: <button  class="btn btn-dark bitn-lg"><%= link_to 'New Profile!', new_profile_path %></button></h2>
         <% end %> 
     <% end %>
 

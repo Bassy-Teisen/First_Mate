@@ -1,10 +1,11 @@
 <section class="bg-primary text-light p-0 text-center text-sm-start h-100" >
     <h1 class="row justify-content-center">Boats Page</h1>
     <% if user_signed_in? %>
-        <% if !current_user.profile.nil? %>
+        <% if current_user.profile.nil? %>
+            <h2 class="pad">Create a profile to create a boat: <button  class="btn btn-dark bitn-lg"><%= link_to 'Profiless page', profiles_path %></button></h2>
+        <% else %>
             <% if current_user.profile.boat.nil? %>
-                <h2>Add your Voyage here: <button  class="btn btn-dark bitn-lg"><%= link_to 'Add your Boat here!', new_boat_path %></button></h2>
-                
+                <h2 class="pad">Add your boat here: <button  class="btn btn-dark bitn-lg"><%= link_to 'Boat!', new_boat_path %></button></h2>
             <% end %>
         <% end %>
     <% end %>

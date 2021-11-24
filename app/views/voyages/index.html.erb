@@ -1,13 +1,15 @@
 <section class="bg-primary text-light p-0 text-center text-sm-start h-100" >
     <h1 class="row justify-content-center">Voyages Page</h1>
     <% if user_signed_in?%>
-        <% if !current_user.profile.nil? %>
+        <% if current_user.profile.nil? %>
+            <h2 class="pad">First create a profile to create a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Profiless page', profiles_path %></button></h2>
+        <% else %>
             <% if !current_user.profile.boat.nil? %>
                 <% if current_user.voyage.nil? %>
-                    <p>Create your own voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Add your Voyage here', new_voyage_path %></button></p>
+                    <h2 class="pad">Create your own voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Add your Voyage here', new_voyage_path %></button></h2>
                 <% end %>
             <% else %>
-                <h2>Add a boat to your profile to create a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Boats page', profiles_path %></button></h2>
+                <h2 class="pad">Add a boat to your profile to create a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Boats page', boats_path %></button></h2>
             <% end %>
         <% end %>
     <% end %>

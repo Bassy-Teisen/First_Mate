@@ -25,7 +25,7 @@ class VoyagePolicy
   end
 
   def update?
-    user.has_role?(:user)
+    user.has_any_role?(:user, :admin)
   end
 
   def edit?
