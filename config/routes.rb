@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
  
+  get 'galleries/index'
+  get 'galleries/new'
+  get 'galleries/create'
+  get 'galleries/show'
+  get 'galleries/edit'
+  get 'galleries/update'
+  get 'galleries/destroy'
   devise_for :users
 
   get 'voyages', to: 'voyages#index', as: 'voyages'
