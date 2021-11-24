@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head class="ab">
     <title>FirstMate</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -18,17 +18,7 @@
     <%= render 'layouts/navdisplay' %>
     <a name="top"></a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <% if flash[:errors] %>
-      <section id="errors">
-        <% flash[:errors].each do |error| %>
-          <p><%= error %></p>
-        <% end %>
-      </section>
-    <% end %>
-    <% if flash[:notice] %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <p class="alert"><%= alert %></p>
+    <%= render 'layouts/alert' %>
     <%= render 'layouts/footerdisplay' %>
     <%= yield %>
   </body>

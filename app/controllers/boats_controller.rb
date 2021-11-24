@@ -56,6 +56,8 @@ class BoatsController < ApplicationController
     redirect_to boats_path
   end
 
+  private
+
   def boat_params 
     params.require(:boat).permit(:category, :size, :capasity, :activity, :profile_id, :boat_image)
   end

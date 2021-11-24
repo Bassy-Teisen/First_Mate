@@ -5,11 +5,6 @@ class User < ApplicationRecord
   has_many :reviews_made, class_name: "GalleryReview", foreign_key: :reviewer_id
   has_many :reviews_of, class_name: "GalleryReview", foreign_key: :reviewee_id
 
-
-
-
-
-
   rolify
   
  

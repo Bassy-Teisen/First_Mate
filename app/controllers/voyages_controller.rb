@@ -80,6 +80,8 @@ class VoyagesController < ApplicationController
     end
   end
 
+  private
+
   def voyage_params 
     params.require(:voyage).permit(:description, :launch, :voyage, :profile_id, :voyage_image)
   end
