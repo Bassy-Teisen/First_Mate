@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_012204) do
+ActiveRecord::Schema.define(version: 2021_11_19_003232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,25 +62,6 @@ ActiveRecord::Schema.define(version: 2021_11_24_012204) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["profile_id"], name: "index_boats_on_profile_id"
-  end
-
-  create_table "galleries", force: :cascade do |t|
-    t.string "description", limit: 500
-    t.date "voyage"
-    t.time "launch"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "voyage_id", null: false
-    t.index ["voyage_id"], name: "index_galleries_on_voyage_id"
-  end
-
-  create_table "gallery_reviews", force: :cascade do |t|
-    t.bigint "reviewer_id", null: false
-    t.bigint "reviewee_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["reviewee_id"], name: "index_gallery_reviews_on_reviewee_id"
-    t.index ["reviewer_id"], name: "index_gallery_reviews_on_reviewer_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -138,9 +119,6 @@ ActiveRecord::Schema.define(version: 2021_11_24_012204) do
   add_foreign_key "applied_voyages", "users"
   add_foreign_key "applied_voyages", "voyages"
   add_foreign_key "boats", "profiles"
-  add_foreign_key "galleries", "voyages"
-  add_foreign_key "gallery_reviews", "users", column: "reviewee_id"
-  add_foreign_key "gallery_reviews", "users", column: "reviewer_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "voyages", "users"
 end
