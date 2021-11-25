@@ -35,6 +35,11 @@ body {
    font-weight: bold;
 }
 
+.p-dark {
+   color: black;
+   font-weight: bold;
+}
+
  #errors {
     margin: 0.5rem 0;
     padding: 0.25rem o.5rem;
