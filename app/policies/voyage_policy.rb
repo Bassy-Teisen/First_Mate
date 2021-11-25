@@ -13,6 +13,10 @@ class VoyagePolicy
   def show?
     true
   end
+  
+  def about?
+    true
+  end
 
   def create?
     user.has_role?(:user)
