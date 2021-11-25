@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class VoyagePolicy
   attr_reader :user, :record
 
@@ -25,7 +23,7 @@ class VoyagePolicy
   end
 
   def update?
-    user.has_any_role?(:user, :admin)
+    return true if @user.voyage == @voyage || user.has_any_role?(:admin) 
   end
 
   def edit?
@@ -33,11 +31,11 @@ class VoyagePolicy
   end
 
   def destroy?
-    create?
+    update?
   end
 
   def join?
-    update?
+    create?
   end
   
   class Scope

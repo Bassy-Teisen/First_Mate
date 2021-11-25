@@ -25,7 +25,7 @@ class BoatPolicy
   end
 
   def update?
-    user.has_role?(:user)
+    return true if @user.profile.boat == @boat || user.has_role?(:admin)
   end
 
   def edit?
@@ -33,7 +33,7 @@ class BoatPolicy
   end
 
   def destroy?
-    create?
+    upadate?
   end
 
   class Scope

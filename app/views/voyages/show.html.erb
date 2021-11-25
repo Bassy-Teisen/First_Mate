@@ -26,10 +26,9 @@
     <button  class="btn btn-dark bitn-lg"><%= link_to "<< Back to Voyages", voyages_path %></button>
    |
 <% if user_signed_in? %>
-   <% if @voyage.user_id == current_user.id %>
-     
-     
-      <%= link_to "Delete Voyage", @voyage, method: :delete %>
+   <% if @voyage.user_id == current_user.id %>     
+          <button  class="btn btn-dark bitn-lg"><%= link_to "Delete Voyage", @voyage, method: :delete %></button>
+
    <% else %>
       <% if current_user.has_already_applied(@voyage.id) %> 
          <h2> Already requested to join this voyage! </h2>

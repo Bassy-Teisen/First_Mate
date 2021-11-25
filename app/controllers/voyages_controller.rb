@@ -1,5 +1,7 @@
 class VoyagesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_voyage, only: [:show, :edit, :update, :destroy, :join]
+  before_action :check_valid
 
   def index
     @voyages = Voyage.order(description: :desc)
@@ -34,16 +36,13 @@ class VoyagesController < ApplicationController
   end
 
   def show
-    @voyage = Voyage.find(params[:id])
   end
 
   def edit
-    @voyage = Voyage.find(params[:id])
     @profiles = Profile.order(:name)
   end
 
   def update
-    @voyage = Voyage.find(params[:id])
     begin 
       @voyage.update!(voyage_params)
       redirect_to @voyage
@@ -54,13 +53,11 @@ class VoyagesController < ApplicationController
   end
 
   def destroy
-    @voyage = Voyage.find(params[:id])
     @voyage.destroy
     redirect_to voyages_path
   end
 
   def join
-    @voyage = Voyage.find(params[:id])
     @applied_voyage = AppliedVoyage.new()
   end
 
@@ -84,5 +81,13 @@ class VoyagesController < ApplicationController
 
   def voyage_params 
     params.require(:voyage).permit(:description, :launch, :voyage, :profile_id, :voyage_image)
+  end
+
+  def set_voyage
+    @voyage = Voyage.find(params[:id])
+  end
+
+  def check_valid
+    authorize @voyage || Voyage
   end
 end

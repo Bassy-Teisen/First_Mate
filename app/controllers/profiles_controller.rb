@@ -1,13 +1,13 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_valid 
-  before_action :set_profile, only: [:new, :edit, :create]
 
 
   
   def index
     @profiles = Profile.order(name: :desc)
-    # @boats = Boat.order(:category)
+
   end
 
  def new
@@ -20,13 +20,12 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
   end
 
   def create
     if current_user.profile.nil?
       @profile = Profile.new(profile_params)
-      @profile.user_id = current_user.id
+      @profile.user_id = current_user.id 
       begin
         @profile.save!
         redirect_to @profile
@@ -40,7 +39,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = Profile.find(params[:id])
     # begin
     if @profile.update!(profile_params)
     redirect_to @profile
@@ -51,13 +49,11 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:id])
     @boat = Boat.order(:category)
    
   end
 
   def destroy
-    @profile = Profile.find(params[:id])
     @profile.destroy
     redirect_to profiles_path
 
@@ -70,11 +66,11 @@ class ProfilesController < ApplicationController
   end
  
   def set_profile
-    @profile = Profile.order(:name)
+    @profile = Profile.find(params[:id])
   end
 
   
   def check_valid
-    authorize Profile
+    authorize @profile || Profile
   end
 end

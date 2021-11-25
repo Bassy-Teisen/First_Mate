@@ -5,8 +5,6 @@
                 <h2 class="pad">Add your Profile here: <button  class="btn btn-dark bitn-lg"><%= link_to 'New Profile!', new_profile_path %></button></h2>
         <% end %> 
     <% end %>
-
-
     <section class="p-auto">
         <div class="container">
             <div class="row text-center">
@@ -46,13 +44,3 @@
     </section>
 </section>
 
-
-        <%
-=begin%>
- <% if current_user.has_any_role? %>
-            <p>Has role</p>
-        <% else %>
-            <p>No Role</p>
-        <% end %>  
-<%
-=end%>

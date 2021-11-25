@@ -25,15 +25,16 @@ class ProfilePolicy
   end
 
   def update?
-    user.has_role?(:user)
+    return true if @user.profile == @profile || user.has_role?(:admin)
   end
 
   def edit?
     update?
   end
 
+
   def destroy?
-    create?
+    update?
   end
 
   class Scope

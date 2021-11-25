@@ -1,5 +1,7 @@
 class BoatsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_boat, only: [:show, :edit, :update, :destroy]
+  before_action :check_valid
 
   def index
     @boats = Boat.order(category: :desc)
@@ -31,16 +33,13 @@ class BoatsController < ApplicationController
   end
 
   def show
-    @boat = Boat.find(params[:id])
   end
 
   def edit
-    @boat = Boat.find(params[:id])
     @profiles = Profile.order(:name)
   end
 
   def update
-    @boat = Boat.find(params[:id])
     begin 
       @boat.update!(boat_params)
       redirect_to @boat
@@ -51,7 +50,6 @@ class BoatsController < ApplicationController
   end
 
   def destroy
-    @boat = Boat.find(params[:id])
     @boat.destroy
     redirect_to boats_path
   end
@@ -61,4 +59,13 @@ class BoatsController < ApplicationController
   def boat_params 
     params.require(:boat).permit(:category, :size, :capasity, :activity, :profile_id, :boat_image)
   end
+
+  def set_boat
+    @boat = Boat.find(params[:id])
+  end
+
+  def check_valid
+    authorize @boat || Boat    
+  end
+
 end

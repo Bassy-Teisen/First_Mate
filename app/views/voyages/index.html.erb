@@ -42,7 +42,11 @@
                                             <p><%= link_to u.user.profile.name, profile_path(u.user.profile.id) %>: Has applied!</p>               
                                         <% end %>                 
                                     <% end %>
-                                    <p href="#" class="btn btn-info"><%= link_to "Apply to join Here!", voyage_path(voy.id), class: "p-danger" %></p>
+                                    <% if current_user == voy.user %>
+                                        <p href="#" class="btn btn-info"><%= link_to "Update your voyage!", edit_voyage_path(voy.id), class: "p-danger" %></p>
+                                    <% else%>
+                                        <p href="#" class="btn btn-info"><%= link_to "Apply to join Here!", voyage_path(voy.id), class: "p-danger" %></p>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>

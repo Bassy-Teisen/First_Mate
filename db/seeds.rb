@@ -6,20 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# profile = [
-#     {name: "Captain Cook", phone_number: "23425565", description: "dhfgf"},
-#     {name: "Jack Sparrow", phone_number: "230985565", description: "dhfgf"},
-#     {name: "Jonny Bravo", phone_number: "2342745665", description: "dhfgf"},
-#     {name: "Goku", phone_number: "2342556789", description: "dhfgf"},
-# ]
-
-# # Profile.create()
-
 Boat.destroy_all
 Voyage.destroy_all
 Profile.destroy_all
 User.destroy_all
-# Profile.create!(profile)
 
 User.create!(email: "Bob@2.com", password: "123456")
 User.create!(email: "Russel@3.com", password: "123456")
@@ -41,6 +31,9 @@ Voyage.create!(user: User.first, description: "Going fishing)", voyage: Date.tod
 Voyage.create!(user: User.second, description: "Going sailing", voyage: Date.today, launch: Time.now)
 Voyage.create!(user: User.third, description: "kayaking trip", voyage: Date.today, launch: Time.now)
 
-AppliedVoyage.create!(user: User.first, voyage: Voyage.first)
 AppliedVoyage.create!(user: User.second, voyage: Voyage.first)
+AppliedVoyage.create!(user: User.third, voyage: Voyage.first)
 AppliedVoyage.create!(user: User.last, voyage: Voyage.first)
+AppliedVoyage.create!(user: User.first, voyage: Voyage.second)
+AppliedVoyage.create!(user: User.third, voyage: Voyage.second)
+AppliedVoyage.create!(user: User.last, voyage: Voyage.second)
