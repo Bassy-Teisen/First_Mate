@@ -11,9 +11,9 @@ Voyage.destroy_all
 Profile.destroy_all
 User.destroy_all
 
+User.create!(email: "Garry@1.com", password: "123456")
 User.create!(email: "Bob@2.com", password: "123456")
 User.create!(email: "Russel@3.com", password: "123456")
-User.create!(email: "Garry@1.com", password: "123456")
 User.create!(email: "Steve@4.com", password: "123456")
 User.create!(email: "Allen@0.com", password: "123456")
 Profile.create!(user: User.first, name: "Garry", phone_number: 12345678, description: "Boating enthusist",profile_image: {io: File.open(Rails.root.join("./app/assets/images/surfing_cat.jpg")), filename: "surfing_cat.jpg"})
@@ -22,10 +22,10 @@ Profile.create!(user: User.third, name: "Russel", phone_number: 12345678, descri
 Profile.create!(user: User.fourth, name: "Steve", phone_number: 12345678, description: "Boating enthusist",profile_image: {io: File.open(Rails.root.join("./app/assets/images/surfing_cat.jpg")), filename: "surfing_cat.jpg"})
 Profile.create!(user: User.fourth, name: "Allen", phone_number: 12345678, description: "Boating enthusist",profile_image: {io: File.open(Rails.root.join("./app/assets/images/surfing_cat.jpg")), filename: "surfing_cat.jpg"})
 
-Boat.create!(profile: Profile.first, category: "Tinny", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/surfing_cat.jpg")), filename: "surfing_cat.jpg"})
-Boat.create!(profile: Profile.second, category: "Kayak", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/surfing_cat.jpg")), filename: "surfing_cat.jpg"})
-Boat.create!(profile: Profile.third, category: "Cruise liner", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/surfing_cat.jpg")), filename: "surfing_cat.jpg"})
-Boat.create!(profile: Profile.fourth, category: "sail", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/surfing_cat.jpg")), filename: "surfing_cat.jpg"})
+Boat.create!(profile: Profile.first, category: "Tinny", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/timber.jpg")), filename: "timber.jpg"})
+Boat.create!(profile: Profile.second, category: "Kayak", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/smfishing.jpg")), filename: "smfishing.jpg"})
+Boat.create!(profile: Profile.third, category: "Cruise liner", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/sail.jpg")), filename: "sail.jpg"})
+Boat.create!(profile: Profile.fourth, category: "sail", size: "big", capasity: "120people", activity: "fishing",boat_image: {io: File.open(Rails.root.join("./app/assets/images/colds.jpg")), filename: "colds.jpg"})
 
 Voyage.create!(user: User.first, description: "Going fishing)", voyage: Date.today, launch: Time.now)
 Voyage.create!(user: User.second, description: "Going sailing", voyage: Date.today, launch: Time.now)

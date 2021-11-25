@@ -18,7 +18,7 @@
                         <div class="card bg-dark text-light">
                             <div class="card-body text-center"> 
                             <h3>  
-                                <td><%= cl_image_tag bo.boat_image.key, crop: :scale, width: 150, cloud_name: 'diu8yxgel' if bo.boat_image.attached?%>
+                                <td><%= cl_image_tag bo.boat_image.key, crop: :scale, width: 300, cloud_name: 'diu8yxgel' if bo.boat_image.attached?%>
                             </h3> 
                                 <tr>
                                     <% if user_signed_in? %>
