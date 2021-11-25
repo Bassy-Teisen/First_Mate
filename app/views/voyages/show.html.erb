@@ -27,8 +27,8 @@
    |
 <% if user_signed_in? %>
    <% if @voyage.user_id == current_user.id %>
-      p-3
-      |
+     
+     
       <%= link_to "Delete Voyage", @voyage, method: :delete %>
    <% else %>
       <% if current_user.has_already_applied(@voyage.id) %> 

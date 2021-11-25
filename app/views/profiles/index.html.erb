@@ -23,14 +23,14 @@
                                                 <h2 style="color:red">Your Profile: </h2>
                                             <% end %> 
                                         <% end %>
-                                        <td><p>Voyage Discription: <%= pro.name %></p>
+                                        <td><h2><%= pro.name %></h2>
                                         </td>
                                         <td>
                                         <h6>Link to Profile: <%= link_to pro.name, profile_path(pro.id) %></h6>
                                         </td>
                                         <td> 
                                         <% if pro.boat.nil? %>
-                                            <td>What a deckhand!</td>
+                                            <td>Their a deckhand!</td>
                                         <% else %>     
                                             <td>Their a captain of a: <%= link_to pro.boat.category, boat_path(pro.boat.id) %></td>  
                                         <% end %>           

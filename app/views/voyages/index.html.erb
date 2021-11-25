@@ -2,7 +2,7 @@
     <h1 class="row justify-content-center">Voyages Page</h1>
     <% if user_signed_in?%>
         <% if current_user.profile.nil? %>
-            <h2 class="pad">First create a profile to create a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Profiless page', profiles_path %></button></h2>
+            <h2 class="pad">First create a profile to join a voyage: <button  class="btn btn-dark bitn-lg"><%= link_to 'Profiless page', profiles_path %></button></h2>
         <% else %>
             <% if !current_user.profile.boat.nil? %>
                 <% if current_user.voyage.nil? %>
