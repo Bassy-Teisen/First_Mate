@@ -5,7 +5,7 @@ class BoatPolicy
 
   def initialize(user, record)
     @user = user
-    @record = record
+    @boat = record
   end
 
   def index?
@@ -25,6 +25,7 @@ class BoatPolicy
   end
 
   def update?
+    
     return true if @user.profile.boat == @boat || user.has_role?(:admin)
   end
 

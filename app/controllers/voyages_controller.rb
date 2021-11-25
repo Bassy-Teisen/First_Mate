@@ -1,6 +1,6 @@
 class VoyagesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_voyage, only: [:show, :edit, :update, :destroy, :join]
+  before_action :set_voyage, only: [:show, :edit, :update, :destroy, :join, :joiner]
   before_action :check_valid
 
   def index

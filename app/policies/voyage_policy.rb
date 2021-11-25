@@ -3,7 +3,7 @@ class VoyagePolicy
 
   def initialize(user, record)
     @user = user
-    @record = record
+    @voyage = record
   end
 
   def index?
@@ -38,6 +38,10 @@ class VoyagePolicy
     update?
   end
 
+  def joiner?
+    create?
+  end
+  
   def join?
     create?
   end

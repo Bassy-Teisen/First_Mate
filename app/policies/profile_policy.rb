@@ -5,7 +5,7 @@ class ProfilePolicy
 
   def initialize(user, record)
     @user = user
-    @record = record
+    @profile = record
   end
 
   def index?
@@ -25,7 +25,7 @@ class ProfilePolicy
   end
 
   def update?
-    return true if @user.profile == @profile || user.has_role?(:admin)
+    return true if @user.profile == @profile || @user.has_role?(:admin)
   end
 
   def edit?
