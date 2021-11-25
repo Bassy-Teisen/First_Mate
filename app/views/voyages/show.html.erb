@@ -10,7 +10,7 @@
          <div class="container lg d-flex justify-content-center p-4">
             <div class="card bg-success text-light">
                <div class="card-body text-center">
-                  <td><%= cl_image_tag @voyage.voyage_image.key, crop: :scale, width: 300, cloud_name: 'diu8yxgel' if @voyage.voyage_image.attached?%></td>  
+                  <td><%= cl_image_tag @voyage.voyage_image.key, crop: :scale, width: 250, cloud_name: 'diu8yxgel' if @voyage.voyage_image.attached?%></td>  
                   <h3 class="p-2">Description: <%= @voyage.description %></h3>
                   <h3 class="p-2">Voyage date: <%= @voyage.voyage %></h3>
                   <h3 class="p-2">Launch Time: <%= @voyage.launch %></h3> 

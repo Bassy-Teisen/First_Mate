@@ -13,7 +13,7 @@
                         <div class="card bg-dark text-light">
                             <div class="card-body text-center">
                                 <h3>
-                                    <%= cl_image_tag pro.profile_image.key, crop: :scale, width: 100, cloud_name: 'diu8yxgel' if pro.profile_image.attached? %> 
+                                    <%= cl_image_tag pro.profile_image.key, crop: :scale, width: 300, cloud_name: 'diu8yxgel' if pro.profile_image.attached? %> 
                                 </h3>
                                     <tr>
                                         <% if user_signed_in? %>

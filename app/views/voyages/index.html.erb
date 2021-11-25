@@ -22,7 +22,7 @@
                         <div class="card bg-dark text-light">
                             <div class="card-body text-center">
                             <h3>
-                                <%= cl_image_tag voy.user.profile.boat.boat_image.key, crop: :scale, width: 100, cloud_name: 'diu8yxgel' if voy.user.profile.boat.boat_image.attached?%>
+                                <%= cl_image_tag voy.user.profile.boat.boat_image.key, crop: :scale, width: 300, cloud_name: 'diu8yxgel' if voy.user.profile.boat.boat_image.attached?%>
                                 <%= link_to voy.user.profile.name, voyage_path(voy.id) %>
                             </h3>
                                 <tr> 

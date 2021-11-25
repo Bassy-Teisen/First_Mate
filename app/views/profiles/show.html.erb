@@ -7,7 +7,7 @@
                <div class="container lg d-flex justify-content-center p-4">
                   <div class="card bg-success text-light">
                      <div class="card-body text-center">
-                     <td><%= cl_image_tag @profile.profile_image.key, crop: :scale, width: 150, cloud_name: 'diu8yxgel' if @profile.profile_image.attached?%></td>
+                     <td><%= cl_image_tag @profile.profile_image.key, crop: :scale, width: 250, cloud_name: 'diu8yxgel' if @profile.profile_image.attached?%></td>
                         <% if @profile.boat.nil? %>
                            <h2><%= @profile.name %> Is a Deckhand!</h2>
                         <% else %>
@@ -34,7 +34,7 @@
       <% if user_signed_in? %> 
          <% if !current_user.profile.nil? %>
             <% if @profile.user_id == current_user.id %>
-               <button  class="btn btn-dark bitn-lg"><%= link_to "Update Profile", edit_profile_path(@profile) %></button>
+               <button  class="btn btn-dark bitn-lg"><%= link_to "Update Profile", edit_profile_path(@profile) %></button>       
                <button  class="btn btn-dark bitn-lg"><%= link_to "Delete Profile", @profile, method: :delete %></button>
             <% end %>
          <% end %>
