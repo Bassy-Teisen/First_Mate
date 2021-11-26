@@ -14,11 +14,8 @@
  *= require_self
  */
 * {
-    padding: .0;
-    
+    padding: .0;  
 }
-
-
 
 body {
    width: 100vw;
@@ -44,20 +41,17 @@ body {
     margin: 0.5rem 0;
     padding: 0.25rem o.5rem;
     border-radius: 0.5rem;
-    background-color: lightpink;
+    background-color: coral;
  }
 
  #errors p {
     margin: 0;
  }
-
-
  
  .collg {
     min-width: 25rem;
  }
 
- 
 footer {
    background-color: rgb(187, 183, 183);
    position: absolute;

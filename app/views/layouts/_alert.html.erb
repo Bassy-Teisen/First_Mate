@@ -1,11 +1,11 @@
- <% if flash[:errors] %>
-      <section id="errors">
-        <% flash[:errors].each do |error| %>
-          <p><%= error %></p>
-        <% end %>
-      </section>
+<% if flash[:errors] %>
+  <section id="errors">
+    <% flash[:errors].each do |error| %>
+      <p><%= error %></p>
     <% end %>
-    <% if flash[:notice] %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <p class="alert"><%= alert %></p>
+  </section>
+<% end %>
+<% if flash[:notice] %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<p class="alert"><%= alert %></p>
