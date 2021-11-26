@@ -58,6 +58,7 @@ footer {
    color: #fff;
    width: 100vw;
    min-height: 6rem;
+   max-height: 6rem;
 }
 
 footer div {
